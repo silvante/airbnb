@@ -9,6 +9,9 @@ export default {
       backgroundColor: {
         base: "#ff385c",
       },
+      textColor: {
+        base: "#ff385c",
+      },
     },
   },
   plugins: [],

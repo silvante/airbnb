@@ -15,7 +15,7 @@ const Header = () => {
           <Link className="text-lg text-gray-500 font-normal">Experiences</Link>
           <Link className="text-lg text-gray-500 font-normal">Online Experiences</Link>
         </div>
-        <Link className="flex items-center justify-between border rounded-full p-2 border-gray-300">
+        <Link to={"/login"} className="flex items-center justify-between border rounded-full p-2 border-gray-300">
           <i className="bx bx-menu text-xl mr-3 ml-2"></i>
           <img
             src={pfp}
