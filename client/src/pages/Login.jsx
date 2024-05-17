@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base flex items-center flex-col">
@@ -30,7 +32,12 @@ const Register = () => {
           >
             Login
           </button>
-          <p className="text-center">don't have account yet? <Link to={"/sing-up"} className="text-base">singup</Link></p>
+          <p className="text-center">
+            don't have account yet?{" "}
+            <Link to={"/sing-up"} className="text-base">
+              singup
+            </Link>
+          </p>
         </form>
       </div>
     </div>

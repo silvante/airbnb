@@ -9,7 +9,9 @@ import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/Login";
 import Singup from "./pages/Singup";
+import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:7000";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
