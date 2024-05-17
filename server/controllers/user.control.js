@@ -61,10 +61,10 @@ const deleteUser = async (req, res) => {
   const removingUserId = req.params.id;
   try {
     const deletedUser = await User.findByIdAndDelete(removingUserId);
-    if (!deleteUser) {
+    if (!deletedUser) {
       res.status(404).send("user is not defined...");
     }
-    res.status(201).send(deleteUser);
+    res.status(201).send(deletedUser);
   } catch (err) {
     console.log(err);
   }
