@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const User = require("../models/user.model");
+const bcryptjs = require("bcryptjs")
+
+const cyfer = bcryptjs.genSaltSync(8)
 
 // mothod: get
 // get all users
@@ -33,7 +36,7 @@ const addUser = async (req, res) => {
     const newUser = await User.create({
       name,
       email,
-      password,
+      password:bcryptjs.hashSync(password, cyfer),
     });
     return res.status(201).send(newUser);
   } catch (err) {
