@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Singup = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const handleSubmit = (e) =>{
-    e.pereventDefault()
-    
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/users", {
+        name,
+        email,
+        password,
+      });
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base flex items-center flex-col">
@@ -22,26 +32,30 @@ const Singup = () => {
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="name here"
               value={name}
+              required
               onChange={(e) => setname(e.target.value)}
             />
           </div>
           <div className="space-y-1 flex flex-col">
             <label>email*</label>
             <input
-              type="text"
+              type="email"
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="email here"
               value={email}
+              required
               onChange={(e) => setemail(e.target.value)}
             />
           </div>
           <div className="space-y-1 flex flex-col">
             <label>password*</label>
             <input
-              type="text"
+              type="password"
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="password"
               value={password}
+              required
+              pattern=".{6,24}"
               onChange={(e) => setpassword(e.target.value)}
             />
           </div>
