@@ -9,7 +9,12 @@ const users = require("./routes/users");
 const login = require("./routes/login");
 
 connectDataBase();
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
