@@ -6,6 +6,7 @@ require("dotenv").config();
 
 // requiring routes
 const users = require("./routes/users");
+const login = require("./routes/login");
 
 connectDataBase();
 app.use(cors());
@@ -19,6 +20,7 @@ const port = process.env.PORT;
 
 // routes
 app.use("/api/users", users);
+app.use("/login", login);
 
 app.listen(port, () => {
   console.log(`started on port ${port}`);

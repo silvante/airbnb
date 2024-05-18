@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Singup = () => {
+  const [creating, setcreating] = useState(false);
+
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -10,14 +12,18 @@ const Singup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setcreating(true);
       const response = await axios.post("/api/users", {
         name,
         email,
         password,
       });
+      setcreating(false);
       console.log(response);
+      alert("sing up is done: just login now...");
     } catch (err) {
       console.log(err);
+      alert("sing up faild: try again...");
     }
   };
   return (
@@ -61,10 +67,12 @@ const Singup = () => {
           </div>
           <p className="text-center">ready?</p>
           <button
-            className="bg-base w-full text-white py-2 rounded-full"
+            className={`${
+              creating ? "bg-base/90" : "bg-base"
+            } w-full text-white py-2 rounded-full`}
             type="submit"
           >
-            Sing up
+            {creating ? "Singing up..." : "Sing up"}
           </button>
           <p className="text-center">
             allredy member?{" "}
