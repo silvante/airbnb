@@ -6,7 +6,6 @@ import { UserContext } from "../UserContext";
 
 const Header = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
   return (
     <header className="w-full flex justify-center px-16">
       <div className="w-base py-4 flex justify-between items-center">
