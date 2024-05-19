@@ -12,8 +12,8 @@ import Singup from "./pages/Singup";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 
-axios.defaults.baseURL = "http://127.0.0.1:7000";
-// axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:7000";
+axios.defaults.withCredentials = true;
 
 const App = () => {
   const router = createBrowserRouter(

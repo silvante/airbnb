@@ -9,7 +9,7 @@ const Register = () => {
 
   const [direct, setDirect] = useState(false);
 
-  const { setUser } = useContext(UserContext);
+  const { setuser } = useContext(UserContext);
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -18,7 +18,7 @@ const Register = () => {
         email,
         password,
       });
-      setUser(response);
+      setuser(response.data);
       alert("login success...");
       setDirect(true);
     } catch (err) {

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Singup = () => {
   const [creating, setcreating] = useState(false);
+  const navigate = useNavigate();
 
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -21,6 +22,7 @@ const Singup = () => {
       setcreating(false);
       console.log(response);
       alert("sing up is done: just login now...");
+      navigate("/login");
     } catch (err) {
       console.log(err);
       alert("sing up faild: try again...");
