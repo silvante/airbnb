@@ -10,8 +10,11 @@ import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/Login";
 import Singup from "./pages/Singup";
 import axios from "axios";
+import { UserContextProvider } from "./UserContext";
 
-axios.defaults.baseURL = "http://localhost:7000";
+axios.defaults.baseURL = "http://127.0.0.1:7000";
+// axios.defaults.withCredentials = true;
+
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,7 +25,11 @@ const App = () => {
       </Route>
     )
   );
-  return <RouterProvider router={router} />;
+  return (
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
+  );
 };
 
 export default App;
