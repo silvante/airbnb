@@ -26,7 +26,7 @@ const Header = () => {
           </Link>
         </div>
         <Link
-          to={user ? "/accaunt" : "/login"}
+          to={user ? "/profile" : "/login"}
           className="flex items-center justify-between border rounded-full p-2 border-gray-300"
         >
           <i className="bx bx-menu text-xl mr-3 ml-2"></i>

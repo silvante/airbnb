@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Singup from "./pages/Singup";
 import axios from "axios";
 import { UserContextProvider } from "./UserContext";
+import UserProfile from "./pages/UserProfile";
 
 axios.defaults.baseURL = "http://localhost:7000";
 axios.defaults.withCredentials = true;
@@ -22,6 +23,7 @@ const App = () => {
         <Route index path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sing-up" element={<Singup />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Route>
     )
   );
