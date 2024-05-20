@@ -7,8 +7,9 @@ require("dotenv").config();
 
 // requiring routes
 const users = require("./routes/users");
-const {router} = require("./routes/login");
+const { router } = require("./routes/login");
 const profile = require("./routes/profile");
+const logout = require("./routes/logout");
 
 connectDataBase();
 app.use(
@@ -30,6 +31,7 @@ const port = process.env.PORT;
 app.use("/api/users", users);
 app.use("/login", router);
 app.use("/profile", profile);
+app.use("/logout", logout);
 
 app.listen(port, () => {
   console.log(`started on port ${port}`);

@@ -1,13 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
-import { Navigate, Link, NavLink } from "react-router-dom";
+import { Navigate, Link, NavLink, Outlet } from "react-router-dom";
+import axios from "axios";
 
 const UserProfile = () => {
-  const { ready, user } = useContext(UserContext);
+  const { ready, user, setuser } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(null);
+  const LogOut = () => {
+    axios.post("/logout");
+    setuser(null);
+    setRedirect("/");
+  };
   if (!ready) {
     return "loading...";
   }
-  if (ready && !user) {
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
+  if (ready && !user && !redirect) {
     return <Navigate to={"/login"} />;
   }
   return (
@@ -29,15 +39,15 @@ const UserProfile = () => {
             <h2 className="font-bold text-3xl">{user.name}</h2>
             <p>{user.email}</p>
           </div>
+          <button
+            onClick={LogOut}
+            className="bg-base text-white py-2 px-16 rounded-full"
+          >
+            Log out
+          </button>
         </div>
         <div className="py-5 flex justify-center space-x-8 profile-navigation">
           <div className="profile-navigation rounded-full shadow-lg border border-gray-300 overflow-hidden">
-            <NavLink
-              className="px-5 py-2 rounded inline-block transition-all"
-              to={"/profile"}
-            >
-              My profile
-            </NavLink>
             <NavLink
               className="px-5 py-2 rounded border-l border-gray-300 inline-block transition-all"
               to={"/profile/bookings"}
@@ -52,6 +62,9 @@ const UserProfile = () => {
             </NavLink>
           </div>
         </div>
+        <section>
+          <Outlet />
+        </section>
       </div>
     </div>
   );
