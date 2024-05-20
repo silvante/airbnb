@@ -14,6 +14,7 @@ import { UserContextProvider } from "./UserContext";
 import UserProfile from "./pages/UserProfile";
 import MyBookings from "./pages/MyBookings";
 import MyPlaces from "./pages/MyPlaces";
+import Addnew from "./pages/Addnew";
 
 axios.defaults.baseURL = "http://localhost:7000";
 axios.defaults.withCredentials = true;
@@ -30,6 +31,7 @@ const App = () => {
           <Route index path="/profile/bookings" element={<MyBookings />} />
           <Route path="/profile/places" element={<MyPlaces />} />
         </Route>
+        <Route path="/add-new" element={<Addnew />} />
       </Route>
     )
   );

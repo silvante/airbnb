@@ -24,20 +24,30 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        <Link
-          to={user ? "/profile" : "/login"}
-          className="flex items-center justify-between border rounded-full p-2 border-gray-300"
-        >
-          <i className="bx bx-menu text-xl mr-3 ml-2"></i>
-          <img
-            src={pfp}
-            alt="logo"
-            width={"32px"}
-            height={"32px"}
-            className="rounded-full"
-          />
-          {!!user && <p className="ml-2">{user.name}</p>}
-        </Link>
+        <div className="flex space-x-2">
+          <Link
+            to={user ? "/profile" : "/login"}
+            className="flex items-center justify-between border rounded-full p-2 border-gray-300"
+          >
+            <i className="bx bx-menu text-xl mr-3 ml-2"></i>
+            <img
+              src={pfp}
+              alt="logo"
+              width={"32px"}
+              height={"32px"}
+              className="rounded-full"
+            />
+            {!!user && <p className="ml-2">{user.name}</p>}
+          </Link>
+          {!!user && (
+            <Link
+              to={"/add-new"}
+              className="bg-base rounded-full px-3 text-white flex items-center"
+            >
+              <i className="bx bx-plus text-2xl"></i> Add new place
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );

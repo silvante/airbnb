@@ -38,21 +38,23 @@ const Register = () => {
           <div className="space-y-1 flex flex-col">
             <label>email*</label>
             <input
-              type="text"
+              type="email"
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="email here"
               value={email}
               onChange={(e) => setemail(e.target.value)}
+              required
             />
           </div>
           <div className="space-y-1 flex flex-col">
             <label>password*</label>
             <input
-              type="text"
+              type="password"
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="password"
               value={password}
               onChange={(e) => setpassword(e.target.value)}
+              required
             />
           </div>
           <p className="text-center">ready?</p>
