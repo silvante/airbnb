@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.mypadding{
-    padding: 5px 8px;
+.mypadding {
+  padding: 5px 8px;
+}
+
+.profile-navigation .active {
+  @apply bg-base text-white;
 }
