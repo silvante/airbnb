@@ -13,6 +13,10 @@ const placeSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Place = mongoose.model("place", placeSchema);

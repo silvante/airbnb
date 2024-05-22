@@ -100,16 +100,39 @@ const Addnew = () => {
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
                 <input type="checkbox" />
-                <i className='bx bx-radio text-3xl px-2' ></i>
+                <i className="bx bx-radio text-3xl px-2"></i>
                 <span>radio</span>
               </label>
             </div>
           </div>
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">Cheack time & guest number</h3>
-            <label>*</label>
-            <div className="w-normal space-y-1 grid grid-cols-2 grid-rows-3">
-              
+            <label>
+              add check in and out time and maximum number of guests*
+            </label>
+            <div className="flex flex-col">
+              <label>Check in time*</label>
+              <input
+                type="time"
+                placeholder="time here..."
+                className="w-hight bg-fun p-3 rounded border outline-none"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Check out time*</label>
+              <input
+                type="time"
+                placeholder="time here..."
+                className="w-hight bg-fun p-3 rounded border outline-none"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>maximum number of guests*</label>
+              <input
+                type="number"
+                placeholder="number here..."
+                className="w-hight bg-fun p-3 rounded border outline-none"
+              />
             </div>
           </div>
         </form>
