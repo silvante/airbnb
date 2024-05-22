@@ -9,3 +9,7 @@
 .profile-navigation .active {
   @apply bg-base text-white;
 }
+
+body {
+  background: #f2f4f5;
+}
