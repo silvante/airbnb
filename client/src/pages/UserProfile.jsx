@@ -23,7 +23,7 @@ const UserProfile = () => {
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
-        <div className="w-full flex flex-col space-y-3 py-6">
+        <div className="w-full flex space-y-3 py-6 items-center justify-between">
           <div className="flex items-center space-x-5">
             <div className="w-[200px] h-[200px] bg-gray-200 rounded-full overflow-hidden flex justify-center items-center">
               {user.avatar ? (
@@ -48,6 +48,9 @@ const UserProfile = () => {
                 Log out
               </button>
             </div>
+          </div>
+          <div>
+            <Link to={'/edit-profile'} className="py-2 px-4 flex items-center rounded-full hover:bg-gray-200 transition-all">Edit profile <i className='bx bx-edit-alt text-xl'></i></Link>
           </div>
         </div>
         <div className="py-5 flex justify-center space-x-8 profile-navigation">

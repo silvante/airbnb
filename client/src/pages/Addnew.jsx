@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../UserContext";
 
 const Addnew = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
   const [title, settitle] = useState("");
   const [adress, setadress] = useState("");
   const [photos, setphotos] = useState([]);
@@ -12,6 +16,10 @@ const Addnew = () => {
   const [checkout, setcheckout] = useState(0);
   const [perks, setperks] = useState([]);
   const [maxGests, setmaxGests] = useState(0);
+
+  if (!user) {
+    navigate("/login");
+  }
 
   const UploadImageByLink = async (e) => {
     e.preventDefault();
