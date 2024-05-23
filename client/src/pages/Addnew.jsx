@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Addnew = () => {
+  const [title, settitle] = useState("");
+  const [adress, setadress] = useState("");
+  const [photos, setphotos] = useState([]);
+  const [linkedPhoto, setlinkedPhoto] = useState("");
+  const [descriptions, setdescriptions] = useState("");
+  const [checkin, setcheckin] = useState(0);
+  const [checkout, setcheckout] = useState(0);
+  const [perks, setperks] = useState([]);
+  const [maxGests, setmaxGests] = useState(0);
+
+  const UploadImageByLink = async (e) => {
+    e.preventDefault();
+    await axios.post("/upload-by-link", { link: linkedPhoto });
+  };
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -12,6 +27,7 @@ const Addnew = () => {
           </Link>
         </nav>
         <form className="space-y-5">
+          {/* name and adress */}
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">name & adress</h3>
             <div className="flex flex-col space-y-1">
@@ -20,6 +36,8 @@ const Addnew = () => {
                 type="text"
                 placeholder="name here..."
                 className="w-hight bg-fun p-3 rounded border outline-none"
+                value={title}
+                onChange={(e) => settitle(e.target.value)}
               />
             </div>
             <div className="flex flex-col space-y-1">
@@ -30,6 +48,8 @@ const Addnew = () => {
                 type="text"
                 placeholder="full adress here..."
                 className="w-hight bg-fun p-3 rounded border outline-none"
+                value={adress}
+                onChange={(e) => setadress(e.target.value)}
               />
             </div>
           </div>
@@ -42,8 +62,14 @@ const Addnew = () => {
                   type="text"
                   placeholder="full adress here..."
                   className="w-hight bg-fun p-3 rounded border outline-none"
+                  value={linkedPhoto}
+                  onChange={(e) => setlinkedPhoto(e.target.value)}
                 />
-                <button className="bg-base w-44 text-white py-2 rounded-full">
+                <button
+                  type="button"
+                  onChange={UploadImageByLink}
+                  className="bg-base w-44 text-white py-2 rounded-full"
+                >
                   add image
                 </button>
               </div>
@@ -52,7 +78,7 @@ const Addnew = () => {
               <label>more photos is better*</label>
               <div className="bg-fun w-normal h-64 p-2 grid grid-cols-5 grid-rows-2 rounded">
                 <button className="bg-white text-3xl text-gray-500 rounded">
-                  <i class="bx bxs-layer-plus"></i>
+                  <i className="bx bxs-layer-plus"></i>
                 </button>
               </div>
               <label>choise nice photos of your place*</label>
@@ -66,6 +92,8 @@ const Addnew = () => {
                 type="text"
                 placeholder="Descriptions here..."
                 className="w-hight bg-fun p-3 rounded border outline-none resize-none h-40"
+                value={descriptions}
+                onChange={(e) => setdescriptions(e.target.value)}
               />
             </div>
           </div>
@@ -110,29 +138,53 @@ const Addnew = () => {
             <label>
               add check in and out time and maximum number of guests*
             </label>
-            <div className="flex flex-col">
+            <div className="flex flex-col spay">
               <label>Check in time*</label>
               <input
                 type="time"
                 placeholder="time here..."
                 className="w-hight bg-fun p-3 rounded border outline-none"
+                value={checkin}
+                onChange={(e) => setcheckin(e.target.value)}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col spay">
               <label>Check out time*</label>
               <input
                 type="time"
                 placeholder="time here..."
                 className="w-hight bg-fun p-3 rounded border outline-none"
+                value={checkout}
+                onChange={(e) => setcheckout(e.target.value)}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col spay">
               <label>maximum number of guests*</label>
               <input
                 type="number"
                 placeholder="number here..."
                 className="w-hight bg-fun p-3 rounded border outline-none"
+                value={maxGests}
+                onChange={(e) => setmaxGests(e.target.value)}
               />
+            </div>
+          </div>
+          <div className="bg-white rounded w-full p-5 space-y-3">
+            <h3 className="text-xl font-bold">Submit or clear</h3>
+            <label className="">submit if you are ready*</label>
+            <div className="space-x-3">
+              <button
+                type="submit"
+                className="py-2 px-5 bg-base rounded-full text-white"
+              >
+                Submit & publish
+              </button>
+              <button
+                type="reset"
+                className="py-2 px-5 bg-black text-white rounded-full"
+              >
+                clear all
+              </button>
             </div>
           </div>
         </form>
