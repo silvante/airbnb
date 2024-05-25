@@ -13,6 +13,14 @@ const EditProfile = () => {
   if (!user) {
     navigate("/login");
   }
+  const fatchData = async () => {
+    const { data } = await axios.get(`/api/users/${user._id}`);
+    setname(data[0].name);
+  };
+
+  useEffect(() => {
+    fatchData();
+  }, []);
 
   return (
     <div className="w-full flex justify-center px-16">
@@ -51,7 +59,9 @@ const EditProfile = () => {
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">Submit</h3>
             <p>submit if you are ready*</p>
-            <button className="bg-base text-white py-2 px-4 rounded-full">save profile changes</button>
+            <button className="bg-base text-white py-2 px-4 rounded-full">
+              save profile changes
+            </button>
           </div>
         </form>
       </div>
