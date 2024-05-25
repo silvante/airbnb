@@ -4,10 +4,12 @@ const imageDownloader = require("image-downloader");
 
 router.post("/upload-by-link", async (req, res) => {
   const { link } = req.body;
-  await download.image({
+  const newName = Date.now() + ".jpg";
+  await imageDownloader.image({
     url: link,
-    dest: "D:/airbnb/uploads",
+    dest: "D:/airbnb/uploads/" + newName,
   });
+  res.json("D:/airbnb/uploads/" + newName);
 });
 
 module.exports = router;

@@ -21,10 +21,10 @@ const Addnew = () => {
     navigate("/login");
   }
 
-  const UploadImageByLink = async (e) => {
-    e.preventDefault();
+  async function UploadImageByLink(ev) {
+    ev.preventDefault();
     await axios.post("/upload-by-link", { link: linkedPhoto });
-  };
+  }
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -74,8 +74,7 @@ const Addnew = () => {
                   onChange={(e) => setlinkedPhoto(e.target.value)}
                 />
                 <button
-                  type="button"
-                  onChange={UploadImageByLink}
+                  onClick={UploadImageByLink}
                   className="bg-base w-44 text-white py-2 rounded-full"
                 >
                   add image
