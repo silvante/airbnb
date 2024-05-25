@@ -50,7 +50,12 @@ const UserProfile = () => {
             </div>
           </div>
           <div>
-            <Link to={'/edit-profile'} className="py-2 px-4 flex items-center rounded-full hover:bg-gray-200 transition-all">Edit profile <i className='bx bx-edit-alt text-xl'></i></Link>
+            <Link
+              to={`/edit-profile/${user._id}`}
+              className="py-2 px-4 flex items-center rounded-full hover:bg-gray-200 transition-all"
+            >
+              Edit profile <i className="bx bx-edit-alt text-xl"></i>
+            </Link>
           </div>
         </div>
         <div className="py-5 flex justify-center space-x-8 profile-navigation">
@@ -65,7 +70,7 @@ const UserProfile = () => {
               className="px-5 py-2 border-l border-gray-300 transition-all flex items-center"
               to={"/profile/places"}
             >
-              <i className='bx bx-home text-xl mr-1'></i> My accommodations
+              <i className="bx bx-home text-xl mr-1"></i> My accommodations
             </NavLink>
           </div>
         </div>

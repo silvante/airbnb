@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 const Register = () => {
+  const { user } = useContext(UserContext);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -29,6 +30,9 @@ const Register = () => {
 
   if (direct) {
     return <Navigate to={"/"} />;
+  }
+  if (user) {
+    return <Navigate to={"/profile"} />;
   }
   return (
     <div className="w-full flex justify-center px-16">

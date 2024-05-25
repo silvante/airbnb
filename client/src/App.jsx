@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/profile/places" element={<MyPlaces />} />
         </Route>
         <Route path="/add-new" element={<Addnew />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/edit-profile/:id" element={<EditProfile />} />
       </Route>
     )
   );
