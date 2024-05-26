@@ -3,6 +3,7 @@ const router = express.Router();
 const imageDownloader = require("image-downloader");
 const path = require("path");
 const fs = require("fs");
+const multer = require("multer");
 
 const uploadDir = path.join("D:/airbnb/server", "/uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -28,5 +29,9 @@ router.post("/upload-by-link", async (req, res) => {
       .json({ error: "An error occurred while downloading the image." });
   }
 });
+
+const photosMiddleware = multer({ dest: "uploads" });
+
+router.post("/upload", photosMiddleware.array("photos", 20), (req, res) => {});
 
 module.exports = router;
