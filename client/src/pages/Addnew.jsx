@@ -1,29 +1,42 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 
 const Addnew = () => {
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, ready } = useContext(UserContext);
 
   const [title, settitle] = useState("");
   const [adress, setadress] = useState("");
   const [photos, setphotos] = useState([]);
   const [linkedPhoto, setlinkedPhoto] = useState("");
+  const [addedPhotos, setaddedPhotos] = useState([]);
   const [descriptions, setdescriptions] = useState("");
   const [checkin, setcheckin] = useState(0);
   const [checkout, setcheckout] = useState(0);
   const [perks, setperks] = useState([]);
   const [maxGests, setmaxGests] = useState(0);
 
+  const [addingPhoto, setaddingPhoto] = useState(false);
+
+  if (!ready) {
+    return "loading...";
+  }
   if (!user) {
-    navigate("/login");
+    return <Navigate to={"/login"} />;
   }
 
   async function UploadImageByLink(ev) {
     ev.preventDefault();
-    await axios.post("/upload-by-link", { link: linkedPhoto });
+    setaddingPhoto(true);
+    const { data: filename } = await axios.post("/upload-by-link", {
+      link: linkedPhoto,
+    });
+    setaddedPhotos((prev) => {
+      return [...prev, filename];
+    });
+    setlinkedPhoto("");
+    setaddingPhoto(false);
   }
   return (
     <div className="w-full flex justify-center px-16">
@@ -75,15 +88,30 @@ const Addnew = () => {
                 />
                 <button
                   onClick={UploadImageByLink}
-                  className="bg-base w-44 text-white py-2 rounded-full"
+                  disabled={addingPhoto}
+                  className={`w-44 text-white py-2 rounded-full ${
+                    addingPhoto ? "bg-base/55" : "bg-base"
+                  }`}
                 >
-                  add image
+                  {!addingPhoto ? "add image" : "adding..."}
                 </button>
               </div>
             </div>
             <div className="flex flex-col space-y-1">
               <label>more photos is better*</label>
-              <div className="bg-fun w-normal h-64 p-2 grid grid-cols-5 grid-rows-2 rounded">
+              <div className="bg-fun w-normal h-64 p-2 grid grid-cols-5 grid-rows-2 rounded gap-2">
+                {addedPhotos.length > 0 &&
+                  addedPhotos.map((link) => {
+                    return (
+                      <div key={link} className="rounded overflow-hidden">
+                        <img
+                          src={"http://localhost:7000/uploads/" + link}
+                          alt={link}
+                          className="h-full"
+                        />
+                      </div>
+                    );
+                  })}
                 <button className="bg-white text-3xl text-gray-500 rounded">
                   <i className="bx bxs-layer-plus"></i>
                 </button>

@@ -13,6 +13,7 @@ const logout = require("./routes/logout");
 const extraRoutes = require("./routes/extraRoutes");
 
 connectDataBase();
+app.use("/uploads", express.static(__dirname + "/uploads"))
 app.use(
   cors({
     credentials: true,
