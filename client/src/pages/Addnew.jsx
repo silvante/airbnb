@@ -38,6 +38,14 @@ const Addnew = () => {
     setlinkedPhoto("");
     setaddingPhoto(false);
   }
+  async function uploadPhotoFromDevice(e) {
+    const files = e.target.files;
+    const data = new FormData();
+    data.set("photos", files);
+    axios.post("/upload", data, {
+      headers: {"Content-Type": "mulipart/form-data"}
+    })
+  }
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -112,9 +120,14 @@ const Addnew = () => {
                       </div>
                     );
                   })}
-                <button className="bg-white text-3xl text-gray-500 rounded">
+                <label className="bg-white text-3xl text-gray-500 rounded flex justify-center items-center cursor-pointer">
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={uploadPhotoFromDevice}
+                  />
                   <i className="bx bxs-layer-plus"></i>
-                </button>
+                </label>
               </div>
               <label>choise nice photos of your place*</label>
             </div>
