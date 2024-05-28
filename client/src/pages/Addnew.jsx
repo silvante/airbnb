@@ -8,7 +8,6 @@ const Addnew = () => {
 
   const [title, settitle] = useState("");
   const [adress, setadress] = useState("");
-  const [photos, setphotos] = useState([]);
   const [linkedPhoto, setlinkedPhoto] = useState("");
   const [addedPhotos, setaddedPhotos] = useState([]);
   const [descriptions, setdescriptions] = useState("");
@@ -63,7 +62,13 @@ const Addnew = () => {
 
   // uploading perks
 
-  const handeleCbChange = (name) => {
+  const handeleCbChange = (ev) => {
+    const { checked, name } = ev.target;
+    if (checked) {
+      setperks([...perks, name]);
+    } else {
+      setperks([...perks.filter((sn) => sn !== name)]);
+    }
   };
   return (
     <div className="w-full flex justify-center px-16">
