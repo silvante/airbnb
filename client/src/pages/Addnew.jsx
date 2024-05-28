@@ -70,6 +70,12 @@ const Addnew = () => {
       setperks([...perks.filter((sn) => sn !== name)]);
     }
   };
+
+  // upload all the info to database
+
+  const handleAddDoc = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -79,7 +85,7 @@ const Addnew = () => {
             Cancle editing
           </Link>
         </nav>
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleAddDoc}>
           {/* name and adress */}
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">name & adress</h3>

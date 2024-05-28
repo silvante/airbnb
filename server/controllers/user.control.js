@@ -11,7 +11,7 @@ const getUsers = async (req, res) => {
     const users = await User.find();
     return res.status(200).send(users);
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 // mothod: get
@@ -25,7 +25,7 @@ const getUser = async (req, res) => {
     }
     return res.status(200).send(user);
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 // mothod: post
@@ -55,7 +55,7 @@ const editUser = async (req, res) => {
     });
     res.status(201).send(edited);
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 // mothod: delete
@@ -69,7 +69,7 @@ const deleteUser = async (req, res) => {
     }
     res.status(201).send(deletedUser);
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 
