@@ -26,6 +26,8 @@ const Addnew = () => {
     return <Navigate to={"/login"} />;
   }
 
+  // uploading images by link
+
   async function UploadImageByLink(ev) {
     ev.preventDefault();
     setaddingPhoto(true);
@@ -38,14 +40,31 @@ const Addnew = () => {
     setlinkedPhoto("");
     setaddingPhoto(false);
   }
+
+  // loading photos to server
+
   async function uploadPhotoFromDevice(e) {
     const files = e.target.files;
     const data = new FormData();
-    data.set("photos", files);
-    axios.post("/upload", data, {
-      headers: {"Content-Type": "mulipart/form-data"}
-    })
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i]);
+    }
+    await axios
+      .post("/upload", data, {
+        headers: { "Content-Type": "mulipart/form-data" },
+      })
+      .then((response) => {
+        const { data: filenames } = response;
+        setaddedPhotos((prev) => {
+          return [...prev, ...filenames];
+        });
+      });
   }
+
+  // uploading perks
+
+  const handeleCbChange = (name) => {
+  };
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -111,17 +130,18 @@ const Addnew = () => {
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {
                     return (
-                      <div key={link} className="rounded overflow-hidden">
+                      <div key={link} className="rounded overflow-hidden flex">
                         <img
                           src={"http://localhost:7000/uploads/" + link}
                           alt={link}
-                          className="h-full"
+                          className="w-full object-cover"
                         />
                       </div>
                     );
                   })}
                 <label className="bg-white text-3xl text-gray-500 rounded flex justify-center items-center cursor-pointer">
                   <input
+                    multiple
                     type="file"
                     className="hidden"
                     onChange={uploadPhotoFromDevice}
@@ -150,32 +170,48 @@ const Addnew = () => {
             <label>check perks which you have*</label>
             <div className="w-normal space-y-1 grid grid-cols-2 grid-rows-3">
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  name="wi-fi"
+                />
                 <i className="bx bx-wifi text-3xl px-2"></i>
                 <span>Free Wi-Fi</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  name="parking"
+                />
                 <i className="bx bxs-car-garage text-2xl px-2"></i>
                 <span>Free parking spot</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={handeleCbChange} name="tv" />
                 <i className="bx bx-tv text-3xl px-2"></i>
                 <span>TV station</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={handeleCbChange} name="pets" />
                 <i className="bx bxs-dog text-3xl px-2"></i>
-                <span>allowed for bets</span>
+                <span>allowed for pets</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  name="private"
+                />
                 <i className="bx bx-door-open text-3xl px-2"></i>
                 <span>Private extrance</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  name="radio"
+                />
                 <i className="bx bx-radio text-3xl px-2"></i>
                 <span>radio</span>
               </label>
