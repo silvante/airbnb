@@ -14,6 +14,7 @@ const getUsers = async (req, res) => {
     res.json(err);
   }
 };
+
 // mothod: get
 // get a user
 const getUser = async (req, res) => {
@@ -28,6 +29,7 @@ const getUser = async (req, res) => {
     res.json(err);
   }
 };
+
 // mothod: post
 // add new user
 const addUser = async (req, res) => {
@@ -43,6 +45,7 @@ const addUser = async (req, res) => {
     res.send(err);
   }
 };
+
 // mothod: put
 // edit user by id
 const editUser = async (req, res) => {
@@ -58,6 +61,7 @@ const editUser = async (req, res) => {
     res.json(err);
   }
 };
+
 // mothod: delete
 // delete user by id
 const deleteUser = async (req, res) => {

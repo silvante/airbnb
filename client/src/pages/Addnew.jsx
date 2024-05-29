@@ -76,6 +76,19 @@ const Addnew = () => {
   const handleAddDoc = (e) => {
     e.preventDefault();
   };
+
+  const hendleResetForm = (e) =>{
+    e.preventDefault()
+    settitle("")
+    setaddedPhotos([])
+    setadress("")
+    setcheckin(0)
+    setcheckout(0)
+    setmaxGests(0)
+    setdescriptions("")
+    setlinkedPhoto("")
+    setperks([])
+  }
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -275,6 +288,7 @@ const Addnew = () => {
                 Submit & publish
               </button>
               <button
+                onClick={hendleResetForm}
                 type="reset"
                 className="py-2 px-5 bg-black text-white rounded-full"
               >

@@ -30,13 +30,72 @@ const getPlace = async (req, res) => {
 // create a place
 // method: POST
 const createPlace = async (req, res) => {
-  const id = req.params.id;
   try {
-    const place = await Places.find({ _id: id });
-    if (!place) {
+    const {
+      title,
+      adress,
+      photos,
+      descriptions,
+      perks,
+      checkin,
+      checkout,
+      maxGuests,
+      owner,
+      price,
+    } = req.body;
+    const newPlace = await Places.create({
+      title,
+      adress,
+      photos,
+      descriptions,
+      perks,
+      checkin,
+      checkout,
+      maxGuests,
+      owner,
+      price,
+    });
+    return res.status(201).send(newPlace);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+// update a place by id
+// method: PUT
+const updatePlace = async (req, res) => {
+  docId = req.params.id;
+  try {
+    const { name, price, descriptions, photos, checkin, checkout, maxGuests } =
+      req.body;
+    const updatingPlace = await Places.findByIdAndUpdate(docId, {
+      name,
+      price,
+      descriptions,
+      photos,
+      checkin,
+      checkout,
+      maxGuests,
+    });
+    if (!updatingPlace) {
       res.status(404).send("place is not defined");
     }
-    res.status(200).send(place);
+    res.status(200).send(updatePlace);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+// delete a place by id
+// method: DELETE
+const deletePlace = async (req, res) => {
+  const removingPlaceId = req.params.id;
+  try {
+    const deletedPlace = await Places.findByIdAndDelete(removingPlaceId);
+    if (!deletePlace) {
+      res.status(404).send("place is not defined");
+    }
+    res.status(200).send(deletePlace);
   } catch (err) {
     res.json(err);
   }
@@ -46,4 +105,6 @@ module.exports = {
   getPlaces,
   getPlace,
   createPlace,
+  updatePlace,
+  deletePlace,
 };
