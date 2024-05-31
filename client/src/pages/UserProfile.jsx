@@ -2,14 +2,21 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import { Navigate, Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
+import Logout from "../components/Logout";
 
 const UserProfile = () => {
   const { ready, user, setuser } = useContext(UserContext);
   const [redirect, setRedirect] = useState(null);
+  const [logingout, setlogingout] = useState(false);
+  const [model, setmodel] = useState(false);
+
   const LogOut = () => {
-    axios.post("/logout");
-    setuser(null);
-    setRedirect("/");
+    setmodel(true);
+    if (logingout) {
+      axios.post("/logout");
+      setuser(null);
+      setRedirect("/");
+    }
   };
   if (!ready) {
     return "loading...";
@@ -20,6 +27,7 @@ const UserProfile = () => {
   if (ready && !user && !redirect) {
     return <Navigate to={"/login"} />;
   }
+
   return (
     <div className="w-full flex justify-center px-16">
       <div className="w-base">
@@ -78,6 +86,9 @@ const UserProfile = () => {
           <Outlet />
         </section>
       </div>
+      {model && (
+        <Logout model={setmodel} resLog={setlogingout} direct={setRedirect} />
+      )}
     </div>
   );
 };

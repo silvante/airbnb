@@ -13,3 +13,7 @@
 body {
   background: #f2f4f5;
 }
+
+.bg-blur{
+  backdrop-filter: blur(8px);
+}
