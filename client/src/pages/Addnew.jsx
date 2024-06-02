@@ -97,23 +97,23 @@ const Addnew = () => {
   // handleSubmitForm
   async function handleSubmitForm(ev) {
     ev.preventDefault();
-    // if (perks.length > 0 && addedPhotos.length > 0) {
-    const { data } = await axios.post("/api/places", {
-      title: title,
-      adress: adress,
-      photos: addedPhotos,
-      descriptions: descriptions,
-      perks: perks,
-      checkin: checkin,
-      checkout: checkout,
-      maxGuests: maxGests,
-      price: price,
-      owner: user._id,
-    });
-    // setRedirect("/profile/places");
-    // } else {
-    //   alert("enter full information");
-    // }
+    if (perks.length > 0 && addedPhotos.length > 0) {
+      const { data } = await axios.post("/api/places", {
+        title: title,
+        adress: adress,
+        photos: addedPhotos,
+        descriptions: descriptions,
+        perks: perks,
+        checkin: checkin,
+        checkout: checkout,
+        maxGuests: maxGests,
+        price: price,
+        owner: user._id,
+      });
+      setRedirect("/profile/places");
+    } else {
+      alert("enter full information");
+    }
   }
 
   if (redirect) {
