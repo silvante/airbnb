@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   getPlaces,
   getPlace,
@@ -22,4 +23,5 @@ router.put("/:id", updatePlace);
 
 // delete place by id
 router.delete("/:id", deletePlace);
+
 module.exports = router;

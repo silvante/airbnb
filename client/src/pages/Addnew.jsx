@@ -15,8 +15,11 @@ const Addnew = () => {
   const [checkout, setcheckout] = useState(0);
   const [perks, setperks] = useState([]);
   const [maxGests, setmaxGests] = useState(0);
+  const [price, setprice] = useState(0);
 
   const [addingPhoto, setaddingPhoto] = useState(false);
+
+  const [redirect, setRedirect] = useState("");
 
   if (!ready) {
     return "loading...";
@@ -77,17 +80,44 @@ const Addnew = () => {
     e.preventDefault();
   };
 
-  const hendleResetForm = (e) =>{
-    e.preventDefault()
-    settitle("")
-    setaddedPhotos([])
-    setadress("")
-    setcheckin(0)
-    setcheckout(0)
-    setmaxGests(0)
-    setdescriptions("")
-    setlinkedPhoto("")
-    setperks([])
+  const hendleResetForm = (e) => {
+    e.preventDefault();
+    settitle("");
+    setaddedPhotos([]);
+    setadress("");
+    setcheckin(0);
+    setcheckout(0);
+    setmaxGests(0);
+    setdescriptions("");
+    setlinkedPhoto("");
+    setperks([]);
+    setprice(0);
+  };
+
+  // handleSubmitForm
+  async function handleSubmitForm(ev) {
+    ev.preventDefault();
+    // if (perks.length > 0 && addedPhotos.length > 0) {
+    const { data } = await axios.post("/api/places", {
+      title: title,
+      adress: adress,
+      photos: addedPhotos,
+      descriptions: descriptions,
+      perks: perks,
+      checkin: checkin,
+      checkout: checkout,
+      maxGuests: maxGests,
+      price: price,
+      owner: user._id,
+    });
+    setRedirect("/profile/places");
+    // } else {
+    //   alert("enter full information");
+    // }
+  }
+
+  if (redirect) {
+    return <Navigate to={redirect} />;
   }
   return (
     <div className="w-full flex justify-center px-16">
@@ -98,7 +128,7 @@ const Addnew = () => {
             Cancle editing
           </Link>
         </nav>
-        <form className="space-y-5" onSubmit={handleAddDoc}>
+        <form className="space-y-5" onSubmit={handleSubmitForm}>
           {/* name and adress */}
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">name & adress</h3>
@@ -110,6 +140,7 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none"
                 value={title}
                 onChange={(e) => settitle(e.target.value)}
+                required
               />
             </div>
             <div className="flex flex-col space-y-1">
@@ -122,6 +153,7 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none"
                 value={adress}
                 onChange={(e) => setadress(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -186,6 +218,7 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none resize-none h-40"
                 value={descriptions}
                 onChange={(e) => setdescriptions(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -254,6 +287,7 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none"
                 value={checkin}
                 onChange={(e) => setcheckin(e.target.value)}
+                required
               />
             </div>
             <div className="flex flex-col spay">
@@ -264,6 +298,7 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none"
                 value={checkout}
                 onChange={(e) => setcheckout(e.target.value)}
+                required
               />
             </div>
             <div className="flex flex-col spay">
@@ -274,11 +309,23 @@ const Addnew = () => {
                 className="w-hight bg-fun p-3 rounded border outline-none"
                 value={maxGests}
                 onChange={(e) => setmaxGests(e.target.value)}
+                required
               />
             </div>
           </div>
           <div className="bg-white rounded w-full p-5 space-y-3">
-            <h3 className="text-xl font-bold">Submit or clear</h3>
+            <h3 className="text-xl font-bold">Final fields</h3>
+            <div className="flex flex-col space-y-1">
+              <label>enter price for place with valute dollar ($)*</label>
+              <input
+                type="number"
+                placeholder="price...$"
+                className="w-hight bg-fun p-3 rounded border outline-none"
+                value={price}
+                onChange={(e) => setprice(e.target.value)}
+                required
+              />
+            </div>
             <label className="">submit if you are ready*</label>
             <div className="space-x-3">
               <button
