@@ -110,7 +110,7 @@ const Addnew = () => {
       price: price,
       owner: user._id,
     });
-    setRedirect("/profile/places");
+    // setRedirect("/profile/places");
     // } else {
     //   alert("enter full information");
     // }

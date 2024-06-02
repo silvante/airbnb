@@ -58,6 +58,7 @@ const createPlace = async (req, res) => {
     return res.status(201).send(newPlace);
   } catch (err) {
     res.json(err);
+    console.log(err);
   }
 };
 

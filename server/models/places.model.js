@@ -5,9 +5,9 @@ const placeSchema = mongoose.Schema({
   adress: String,
   photos: [String],
   descriptions: String,
-  perks: String,
-  checkin: Number,
-  checkout: Number,
+  perks: [String],
+  checkin: String,
+  checkout: String,
   maxGuests: Number,
   owner: {
     type: mongoose.Schema.Types.ObjectId,
