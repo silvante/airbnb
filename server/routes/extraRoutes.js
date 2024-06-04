@@ -4,6 +4,7 @@ const imageDownloader = require("image-downloader");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
+const Place = require("../models/places.model");
 
 const uploadDir = path.join("D:/airbnb/server", "/uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -46,6 +47,20 @@ router.post("/upload", photosMiddleware.array("photos", 20), (req, res) => {
     res.json(uploadedFiles);
   } catch (error) {
     res.json(error);
+  }
+});
+
+router.get("/places-of/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const usersPlaces = await Place.find({ owner: id });
+    if (!usersPlaces) {
+      res.status(404).send("this user has nopo places");
+    }
+    res.status(200).send(usersPlaces);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
   }
 });
 
