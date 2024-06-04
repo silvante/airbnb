@@ -14,7 +14,7 @@ export default {
         fun: "#f2f4f5",
       },
       textColor: {
-        base: "#ff385c",
+        baseRed: "#ff385c",
       },
       outlineColor: {
         base: "#ff385c",
