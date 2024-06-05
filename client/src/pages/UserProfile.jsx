@@ -29,7 +29,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="w-full flex justify-center px-16">
+    <div className="w-full flex justify-center px-basic">
       <div className="w-base">
         <div className="w-full flex space-y-3 py-6 items-center justify-between">
           <div className="flex items-center space-x-5">

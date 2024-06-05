@@ -19,6 +19,9 @@ export default {
       outlineColor: {
         base: "#ff385c",
       },
+      padding:{
+        basic: "100px"
+      }
     },
   },
   plugins: [],

@@ -23,7 +23,7 @@ const EditProfile = () => {
   }, []);
 
   return (
-    <div className="w-full flex justify-center px-16">
+    <div className="w-full flex justify-center px-basic">
       <div className="w-base">
         <nav className="w-full flex justify-between items-center py-5">
           <h3 className="text-2xl font-bold">Edit profile "{user.name}"</h3>

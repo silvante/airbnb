@@ -120,7 +120,7 @@ const Addnew = () => {
     return <Navigate to={redirect} />;
   }
   return (
-    <div className="w-full flex justify-center px-16">
+    <div className="w-full flex justify-center px-basic">
       <div className="w-base">
         <nav className="w-full flex justify-between items-center py-5">
           <h2 className="font-bold text-2xl">Add new place</h2>

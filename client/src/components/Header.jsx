@@ -7,7 +7,7 @@ import { UserContext } from "../UserContext";
 const Header = () => {
   const { user } = useContext(UserContext);
   return (
-    <header className="w-full flex justify-center px-16">
+    <header className="w-full flex justify-center px-basic">
       <div className="w-base py-4 flex justify-between items-center">
         <Link to={"/"}>
           <img src={logo} alt="logo of this site" width={"110px"} />

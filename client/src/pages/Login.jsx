@@ -35,7 +35,7 @@ const Register = () => {
     return <Navigate to={"/profile"} />;
   }
   return (
-    <div className="w-full flex justify-center px-16">
+    <div className="w-full flex justify-center px-basic">
       <div className="w-base flex items-center flex-col">
         <h2 className="text-2xl font-bold">Login</h2>
         <form className=" space-y-2 w-80" onSubmit={handleLogin}>
