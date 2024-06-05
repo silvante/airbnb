@@ -20,7 +20,7 @@ const MyPlaces = () => {
         <h2 className="text-2xl font-semibold">
           Your <span className="text-baseRed">places</span>
         </h2>
-        <h2 className="text-2xl font-bold">total number - {places.length}</h2>
+        <h2 className="text-2xl font-semibold">total number - {places.length}</h2>
       </header>
       <ul className="my-5">
         {places.map((place) => {
