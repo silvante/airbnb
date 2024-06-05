@@ -46,7 +46,7 @@ const UserProfile = () => {
             </div>
             <div className=" space-y-4">
               <div>
-                <h2 className="font-bold text-3xl">{user.name}</h2>
+                <h2 className="font-semibold text-3xl">{user.name}</h2>
                 <p>{user.email}</p>
               </div>
               <button
