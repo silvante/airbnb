@@ -17,7 +17,7 @@ const MyPlaces = () => {
   return (
     <div className="w-full">
       <header className="flex items-center justify-between w-full">
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-semibold">
           Your <span className="text-baseRed">places</span>
         </h2>
         <h2 className="text-2xl font-bold">total number - {places.length}</h2>
