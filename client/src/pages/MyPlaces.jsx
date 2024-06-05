@@ -38,14 +38,14 @@ const MyPlaces = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold truncate w-96">
+                  <h3 className="font-semibold truncate w-96">
                     {place.title}
                   </h3>
                   <p className="truncate w-56">{place.descriptions}</p>
                 </div>
               </div>
               <div>
-              <h3 className="text-xl font-bold">{place.price}$ - per night</h3>
+              <h3 className="font-semibold">{place.price}$ - per night</h3>
               <p>max munber of guests - {place.maxGuests}</p>
               </div>
               <div className="flex flex-col items-end space-y-3">
