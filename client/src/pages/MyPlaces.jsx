@@ -52,7 +52,7 @@ const MyPlaces = () => {
                 <Link className="bg-base py-2 px-5 text-white rounded-full ">
                   view datails
                 </Link>
-                <button className="bg-black py-2 px-5 text-white rounded-full ">Delete place</button>
+                <button className="bg-black py-2 px-5 text-white rounded-full ">Settings <i class='bx bx-cog'></i></button>
               </div>
             </li>
           );
