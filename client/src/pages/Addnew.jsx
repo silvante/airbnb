@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 
 const Addnew = () => {
   const { user, ready } = useContext(UserContext);
-
   const { id } = useParams();
-  console.log(id);
+
+  // states
 
   const [title, settitle] = useState("");
   const [adress, setadress] = useState("");
@@ -21,8 +21,37 @@ const Addnew = () => {
   const [price, setprice] = useState(0);
 
   const [addingPhoto, setaddingPhoto] = useState(false);
-
   const [redirect, setRedirect] = useState("");
+
+  // functions of edit place
+
+  async function getPlace(params) {
+    if (!id) {
+      return;
+    }
+    const { data } = await axios.get(`/api/places/${id}`);
+    const res = data[0];
+    settitle(res.title);
+    setadress(res.adress);
+    setaddedPhotos(res.photos);
+    setdescriptions(res.descriptions);
+    setcheckin(res.checkin);
+    setcheckout(res.checkout);
+    setmaxGests(res.maxGuests);
+    setperks(res.perks);
+    setprice(res.price);
+  }
+
+  useEffect(() => {
+    getPlace();
+  }, id);
+
+  const deletePhoto = (filename) => {
+    setaddedPhotos([...addedPhotos.filter((photo) => photo !== filename)]);
+  };
+
+  // functions on add new place
+  // if managemants
 
   if (!ready) {
     return "loading...";
@@ -79,10 +108,6 @@ const Addnew = () => {
 
   // upload all the info to database
 
-  const handleAddDoc = (e) => {
-    e.preventDefault();
-  };
-
   const hendleResetForm = (e) => {
     e.preventDefault();
     settitle("");
@@ -98,30 +123,51 @@ const Addnew = () => {
   };
 
   // handleSubmitForm
-  async function handleSubmitForm(ev) {
+  async function savePlace(ev) {
     ev.preventDefault();
-    if (perks.length > 0 && addedPhotos.length > 0) {
-      const { data } = await axios.post("/api/places", {
-        title: title,
-        adress: adress,
-        photos: addedPhotos,
-        descriptions: descriptions,
-        perks: perks,
-        checkin: checkin,
-        checkout: checkout,
-        maxGuests: maxGests,
-        price: price,
-        owner: user._id,
-      });
-      setRedirect("/profile/places");
-    } else {
-      alert("enter full information");
+    try {
+      if (id) {
+        // update place
+        const { data } = await axios.put(`/api/places/${id}`, {
+          title: title,
+          adress: adress,
+          photos: addedPhotos,
+          descriptions: descriptions,
+          perks: perks,
+          checkin: checkin,
+          checkout: checkout,
+          maxGuests: maxGests,
+          price: price,
+        });
+        setRedirect("/profile/places");
+        console.log(true);
+      } else if (perks.length > 0 && addedPhotos.length > 0) {
+        // add new place
+        const { data } = await axios.post("/api/places", {
+          title: title,
+          adress: adress,
+          photos: addedPhotos,
+          descriptions: descriptions,
+          perks: perks,
+          checkin: checkin,
+          checkout: checkout,
+          maxGuests: maxGests,
+          price: price,
+          owner: user._id,
+        });
+        setRedirect("/profile/places");
+      } else {
+        alert("enter full information");
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
   if (redirect) {
     return <Navigate to={redirect} />;
   }
+
   return (
     <div className="w-full flex justify-center px-basic">
       <div className="w-base">
@@ -131,7 +177,7 @@ const Addnew = () => {
             Cancle editing
           </Link>
         </nav>
-        <form className="space-y-5" onSubmit={handleSubmitForm}>
+        <form className="space-y-5" onSubmit={savePlace}>
           {/* name and adress */}
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">name & adress</h3>
@@ -189,7 +235,16 @@ const Addnew = () => {
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {
                     return (
-                      <div key={link} className="rounded overflow-hidden flex">
+                      <div
+                        key={link}
+                        className="rounded overflow-hidden flex relative"
+                      >
+                        <button
+                          onClick={() => deletePhoto(link)}
+                          className=" absolute bg-white w-8 h-8 rounded-full bottom-2 right-2"
+                        >
+                          <i className="bx bx-trash"></i>
+                        </button>
                         <img
                           src={"http://localhost:7000/uploads/" + link}
                           alt={link}
@@ -233,6 +288,7 @@ const Addnew = () => {
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
+                  checked={perks.includes("wi-fi")}
                   name="wi-fi"
                 />
                 <i className="bx bx-wifi text-3xl px-2"></i>
@@ -242,18 +298,29 @@ const Addnew = () => {
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
+                  checked={perks.includes("parking")}
                   name="parking"
                 />
                 <i className="bx bxs-car-garage text-2xl px-2"></i>
                 <span>Free parking spot</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" onChange={handeleCbChange} name="tv" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  checked={perks.includes("tv")}
+                  name="tv"
+                />
                 <i className="bx bx-tv text-3xl px-2"></i>
                 <span>TV station</span>
               </label>
               <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
-                <input type="checkbox" onChange={handeleCbChange} name="pets" />
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  checked={perks.includes("pets")}
+                  name="pets"
+                />
                 <i className="bx bxs-dog text-3xl px-2"></i>
                 <span>allowed for pets</span>
               </label>
@@ -261,6 +328,7 @@ const Addnew = () => {
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
+                  checked={perks.includes("private")}
                   name="private"
                 />
                 <i className="bx bx-door-open text-3xl px-2"></i>
@@ -270,6 +338,7 @@ const Addnew = () => {
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
+                  checked={perks.includes("radio")}
                   name="radio"
                 />
                 <i className="bx bx-radio text-3xl px-2"></i>

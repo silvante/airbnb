@@ -9,6 +9,7 @@ const getPlaces = async (req, res) => {
     res.status(200).send(places);
   } catch (err) {
     res.json(err);
+    console.log(err);
   }
 };
 
@@ -24,6 +25,7 @@ const getPlace = async (req, res) => {
     res.status(200).send(place);
   } catch (err) {
     res.json(err);
+    console.log(err);
   }
 };
 
@@ -67,11 +69,22 @@ const createPlace = async (req, res) => {
 const updatePlace = async (req, res) => {
   docId = req.params.id;
   try {
-    const { name, price, descriptions, photos, checkin, checkout, maxGuests } =
-      req.body;
-    const updatingPlace = await Places.findByIdAndUpdate(docId, {
-      name,
+    const {
+      title,
       price,
+      descriptions,
+      photos,
+      checkin,
+      checkout,
+      maxGuests,
+      adress,
+      perks,
+    } = req.body;
+    const updatingPlace = await Places.findByIdAndUpdate(docId, {
+      title,
+      adress,
+      price,
+      perks,
       descriptions,
       photos,
       checkin,
@@ -81,9 +94,10 @@ const updatePlace = async (req, res) => {
     if (!updatingPlace) {
       res.status(404).send("place is not defined");
     }
-    res.status(200).send(updatePlace);
+    res.status(200).send(updatingPlace);
   } catch (err) {
     res.json(err);
+    console.log(err);
   }
 };
 
@@ -99,6 +113,7 @@ const deletePlace = async (req, res) => {
     res.status(200).send(deletePlace);
   } catch (err) {
     res.json(err);
+    console.log(err);
   }
 };
 
