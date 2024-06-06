@@ -20,7 +20,9 @@ const MyPlaces = () => {
         <h2 className="text-2xl font-semibold">
           Your <span className="text-baseRed">places</span>
         </h2>
-        <h2 className="text-2xl font-semibold">total number - {places.length}</h2>
+        <h2 className="text-2xl font-semibold">
+          total number - {places.length}
+        </h2>
       </header>
       <ul className="my-5">
         {places.map((place) => {
@@ -38,21 +40,24 @@ const MyPlaces = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold truncate w-96">
-                    {place.title}
-                  </h3>
+                  <h3 className="font-semibold truncate w-96">{place.title}</h3>
                   <p className="truncate w-56">{place.descriptions}</p>
                 </div>
               </div>
               <div>
-              <h3 className="font-semibold">{place.price}$ - per night</h3>
-              <p>max munber of guests - {place.maxGuests}</p>
+                <h3 className="font-semibold">{place.price}$ - per night</h3>
+                <p>max munber of guests - {place.maxGuests}</p>
               </div>
               <div className="flex flex-col items-end space-y-3">
-                <Link className="bg-base py-2 px-5 text-white rounded-full ">
+                <Link className="bg-base py-2 px-5 text-white rounded-full">
                   view datails
                 </Link>
-                <button className="bg-black py-2 px-5 text-white rounded-full ">Settings <i class='bx bx-cog'></i></button>
+                <Link
+                  to={`/edit-plase/${place._id}`}
+                  className="bg-black py-2 px-5 text-white rounded-full "
+                >
+                  Settings <i className="bx bx-cog"></i>
+                </Link>
               </div>
             </li>
           );

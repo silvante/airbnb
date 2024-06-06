@@ -24,7 +24,7 @@ const Home = () => {
                     download={`http://localhost:7000/uploads/${place.photos[0]}`}
                     className="absolute bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center top-3 right-3 text-lg opacity-70 hover:opacity-100 transition-all"
                   >
-                    <i class="bx bxs-download"></i>
+                    <i className="bx bxs-download"></i>
                   </a>
                   <img
                     src={`${API_PORT}/uploads/${place.photos[0]}`}

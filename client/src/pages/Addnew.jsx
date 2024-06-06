@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 
 const Addnew = () => {
   const { user, ready } = useContext(UserContext);
+
+  const { id } = useParams();
+  console.log(id);
 
   const [title, settitle] = useState("");
   const [adress, setadress] = useState("");
