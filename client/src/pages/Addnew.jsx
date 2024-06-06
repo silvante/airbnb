@@ -172,7 +172,7 @@ const Addnew = () => {
     <div className="w-full flex justify-center px-basic">
       <div className="w-base">
         <nav className="w-full flex justify-between items-center py-5">
-          <h2 className="font-bold text-2xl">Add new place</h2>
+          <h2 className="font-bold text-2xl">Form for place</h2>
           <Link className="px-5 py-2 rounded-full bg-base text-white" to={"/"}>
             Cancle editing
           </Link>
