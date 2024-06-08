@@ -9,6 +9,7 @@ const Singup = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [username, setusername] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const Singup = () => {
         name,
         email,
         password,
+        username,
       });
       setcreating(false);
       console.log(response);
@@ -42,6 +44,17 @@ const Singup = () => {
               value={name}
               required
               onChange={(e) => setname(e.target.value)}
+            />
+          </div>
+          <div className="space-y-1 flex flex-col">
+            <label>username*</label>
+            <input
+              type="text"
+              className="bg-gray-200 outline-none px-5 py-2 rounded-full"
+              placeholder="unique name here"
+              value={username}
+              required
+              onChange={(e) => setusername(e.target.value)}
             />
           </div>
           <div className="space-y-1 flex flex-col">
@@ -78,7 +91,7 @@ const Singup = () => {
           </button>
           <p className="text-center">
             allredy member?{" "}
-            <Link to={"/login"} className="text-base">
+            <Link to={"/login"} className="text-baseRed">
               login
             </Link>
           </p>

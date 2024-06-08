@@ -37,7 +37,7 @@ const Register = () => {
   return (
     <div className="w-full flex justify-center px-basic">
       <div className="w-base flex items-center flex-col">
-        <h2 className="text-2xl font-bold">Login</h2>
+        <h2 className="text-2xl font-bold">Log in</h2>
         <form className=" space-y-2 w-80" onSubmit={handleLogin}>
           <div className="space-y-1 flex flex-col">
             <label>email*</label>
@@ -70,7 +70,7 @@ const Register = () => {
           </button>
           <p className="text-center">
             don't have account yet?{" "}
-            <Link to={"/sing-up"} className="text-base">
+            <Link to={"/sing-up"} className="text-baseRed">
               singup
             </Link>
           </p>
