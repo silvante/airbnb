@@ -5,17 +5,21 @@ const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("./login");
 
 router.get("/", (req, res) => {
-  const { token } = req.cookies;
-  if (token) {
-    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-      if (err) throw err;
-      const { name, email, _id, verificated } = await User.findById(
-        userData.id
-      );
-      res.json({ name, email, _id, verificated });
-    });
-  } else {
-    res.json(null);
+  try {
+    const { token } = req.cookies;
+    if (token) {
+      jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const { name, email, _id, verificated, username, avatar } =
+          await User.findById(userData.id);
+        res.json({ name, email, _id, verificated, username, avatar });
+      });
+    } else {
+      res.json(null);
+    }
+  } catch (err) {
+    console.log(err);
+    res.send(err);
   }
 });
 

@@ -36,7 +36,7 @@ const UserProfile = () => {
             <div className="w-[200px] h-[200px] bg-gray-200 rounded-full overflow-hidden flex justify-center items-center">
               {user.avatar ? (
                 <img
-                  src={user.avatar}
+                  src={`http://localhost:7000/uploads/${user.avatar}`}
                   alt={user.name}
                   className="w-full h-full"
                 />

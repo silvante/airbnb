@@ -19,7 +19,7 @@ const Singup = () => {
         name,
         email,
         password,
-        username,
+        username: `@${username}`,
       });
       setcreating(false);
       console.log(response);
