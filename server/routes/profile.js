@@ -9,8 +9,10 @@ router.get("/", (req, res) => {
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       if (err) throw err;
-      const { name, email, _id } = await User.findById(userData.id);
-      res.json({ name, email, _id });
+      const { name, email, _id, verificated } = await User.findById(
+        userData.id
+      );
+      res.json({ name, email, _id, verificated });
     });
   } else {
     res.json(null);

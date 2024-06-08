@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
     required: true,
     minlength: 6,
   },
+  verificated: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const User = mongoose.model("user", userSchema);

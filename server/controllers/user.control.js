@@ -34,11 +34,12 @@ const getUser = async (req, res) => {
 // add new user
 const addUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, verificated } = req.body;
     const newUser = await User.create({
       name,
       email,
       password: bcryptjs.hashSync(password, cyfer),
+      verificated,
     });
     return res.status(201).send(newUser);
   } catch (err) {
@@ -51,10 +52,11 @@ const addUser = async (req, res) => {
 const editUser = async (req, res) => {
   const userID = req.params.id;
   try {
-    const { name, password } = req.body;
+    const { name, password, verificated } = req.body;
     const edited = await User.findByIdAndUpdate(userID, {
       name,
       password,
+      verificated,
     });
     res.status(201).send(edited);
   } catch (err) {
