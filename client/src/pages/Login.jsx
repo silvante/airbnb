@@ -5,7 +5,7 @@ import { UserContext } from "../UserContext";
 
 const Register = () => {
   const { user } = useContext(UserContext);
-  const [email, setemail] = useState("");
+  const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
 
   const [direct, setDirect] = useState(false);
@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/login", {
-        email,
+        username,
         password,
       });
       setuser(response.data);
@@ -40,13 +40,13 @@ const Register = () => {
         <h2 className="text-2xl font-bold">Log in</h2>
         <form className=" space-y-2 w-80" onSubmit={handleLogin}>
           <div className="space-y-1 flex flex-col">
-            <label>email*</label>
+            <label>username*</label>
             <input
-              type="email"
+              type="text"
               className="bg-gray-200 outline-none px-5 py-2 rounded-full"
               placeholder="email here"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
               required
             />
           </div>

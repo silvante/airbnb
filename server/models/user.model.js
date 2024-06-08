@@ -11,9 +11,9 @@ const userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  profile: {
+  avatar: {
     type: String,
-    default: undefined,
+    default: "avatar.jpg",
   },
   email: {
     type: String,

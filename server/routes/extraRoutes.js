@@ -66,7 +66,7 @@ router.get("/places-of/:id", async (req, res) => {
 
 const profileMidleware = multer({ dest: "uploads" });
 
-router.post("/upload-pfp", profileMidleware("profile"), (req, res) => {
+router.post("/upload-pfp", profileMidleware.single("profile"), (req, res) => {
   try {
     const uploadedFile = req.file;
     if (!uploadedFile) {

@@ -7,14 +7,14 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = "thefool_ahsvausakashvklashcvlaysgaus";
 
 router.post("/", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const userDoc = await User.findOne({ email });
+    const userDoc = await User.findOne({ username });
     if (userDoc) {
       const passwordOk = bcryptjs.compareSync(password, userDoc.password);
       if (passwordOk) {
         jwt.sign(
-          { email: userDoc.email, id: userDoc._id },
+          { username: userDoc.username, id: userDoc._id },
           jwtSecret,
           {},
           (err, token) => {
@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
     } else res.json("not found");
   } catch (err) {
     res.send(err);
+    console.log(err);
   }
 });
 
