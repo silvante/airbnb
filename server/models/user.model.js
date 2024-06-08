@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  profile: {
+    type: String,
+    default: undefined,
+  },
   email: {
     type: String,
     required: true,

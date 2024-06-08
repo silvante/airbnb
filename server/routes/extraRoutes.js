@@ -64,4 +64,25 @@ router.get("/places-of/:id", async (req, res) => {
   }
 });
 
+const profileMidleware = multer({ dest: "uploads" });
+
+router.post("/upload-pfp", profileMidleware("profile"), (req, res) => {
+  try {
+    const uploadedFile = req.file;
+    if (!uploadedFile) {
+      return res.status(400).send({ err: "no file was uploaded" });
+    }
+
+    const { path, originalname } = uploadedFile;
+    const nameParts = originalname.split(".");
+    const extantion = nameParts[nameParts.length - 1];
+    const newPath = path + "." + extantion;
+    const uploadedFilePath = newPath.replace("uploads", "");
+    res.status(201).json({ file: uploadedFilePath });
+  } catch (error) {
+    res.send(error);
+    console.log(error);
+  }
+});
+
 module.exports = router;
