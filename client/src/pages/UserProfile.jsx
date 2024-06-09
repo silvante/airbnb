@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { Navigate, Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +9,16 @@ const UserProfile = () => {
   const { ready, user, setuser } = useContext(UserContext);
   const [redirect, setRedirect] = useState(null);
   const [logingout, setlogingout] = useState(false);
+  const [PlacesLength, setPlacesLength] = useState(0);
   const [model, setmodel] = useState(false);
+
+  async function getPlaceLength() {
+    const { data } = await axios.get(`/places-of/${user._id}`);
+    setPlacesLength(data.length);
+  }
+  useEffect(() => {
+    getPlaceLength();
+  }, []);
 
   const LogOut = () => {
     setmodel(true);
@@ -29,21 +38,20 @@ const UserProfile = () => {
     return <Navigate to={"/login"} />;
   }
 
+  console.log(PlacesLength);
+  console.log(ready);
+
   return (
     <div className="w-full flex justify-center px-basic">
       <div className="w-base">
         <div className="w-full flex space-y-3 py-6 items-center justify-between">
           <div className="flex items-center space-x-5">
             <div className="w-[200px] h-[200px] bg-gray-200 rounded-full overflow-hidden flex justify-center items-center">
-              {user.avatar ? (
-                <img
-                  src={`http://localhost:7000/uploads/${user.avatar}`}
-                  alt={user.name}
-                  className="w-full h-full"
-                />
-              ) : (
-                <i className="bx bxs-user text-gray-400 text-7xl"></i>
-              )}
+              <img
+                src={`http://localhost:7000/uploads/${user.avatar}`}
+                alt={user.name}
+                className="w-full h-full"
+              />
             </div>
             <div className=" space-y-4">
               <div>
@@ -59,6 +67,10 @@ const UserProfile = () => {
                   )}
                 </h2>
                 <p>username: {user.username}</p>
+                <p>
+                  user has <span className="font-semibold">{PlacesLength}</span>{" "}
+                  appartment posts
+                </p>
               </div>
               <button
                 onClick={LogOut}
