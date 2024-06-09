@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_PORT } from "../septer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [api, setapi] = useState([]);
@@ -17,7 +18,11 @@ const Home = () => {
         <section className="w-full grid grid-cols-4 gap-8">
           {api.map((place) => {
             return (
-              <div key={place._id} className="space-y-2">
+              <Link
+                to={`/place/${place._id}`}
+                key={place._id}
+                className="space-y-2"
+              >
                 <div className="bg-slate-300 rounded-2xl overflow-hidden relative">
                   <a
                     href={"#"}
@@ -36,11 +41,13 @@ const Home = () => {
                   <p className="w-full truncate font-semibold">{place.title}</p>
                   <p className="truncate">{place.adress}</p>
                   <p>
-                    <span className="font-semibold truncate">{place.price}$</span> per
-                    night
+                    <span className="font-semibold truncate">
+                      {place.price}$
+                    </span>{" "}
+                    per night
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </section>

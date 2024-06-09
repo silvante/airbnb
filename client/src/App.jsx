@@ -16,6 +16,7 @@ import MyBookings from "./pages/MyBookings";
 import MyPlaces from "./pages/MyPlaces";
 import Addnew from "./pages/Addnew";
 import EditProfile from "./pages/EditProfile";
+import Booking from "./pages/Booking";
 
 axios.defaults.baseURL = "http://localhost:7000";
 axios.defaults.withCredentials = true;
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/profile/places" element={<MyPlaces />} />
         </Route>
         <Route path="/add-new" element={<Addnew />} />
+        <Route path="/place/:id" element={<Booking />} />
         <Route path="/edit-plase/:id" element={<Addnew />} />
         <Route path="/edit-profile/:id" element={<EditProfile />} />
       </Route>

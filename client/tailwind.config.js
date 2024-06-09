@@ -5,13 +5,17 @@ export default {
     extend: {
       width: {
         base: "2000px",
+        booking: "1100px",
         normal: "800px",
         hight: "500px",
-        smally: "400px"
+        smally: "400px",
       },
       backgroundColor: {
         base: "#ff385c",
         fun: "#f2f4f5",
+      },
+      borderColor: {
+        base: "#ff385c",
       },
       textColor: {
         baseRed: "#ff385c",
@@ -19,9 +23,9 @@ export default {
       outlineColor: {
         base: "#ff385c",
       },
-      padding:{
-        basic: "100px"
-      }
+      padding: {
+        basic: "100px",
+      },
     },
   },
   plugins: [],
