@@ -3,6 +3,7 @@ import { UserContext } from "../UserContext";
 import { Navigate, Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
 import Logout from "../components/Logout";
+import check from "../assets/check.svg";
 
 const UserProfile = () => {
   const { ready, user, setuser } = useContext(UserContext);
@@ -46,8 +47,18 @@ const UserProfile = () => {
             </div>
             <div className=" space-y-4">
               <div>
-                <h2 className="font-semibold text-3xl">{user.name}</h2>
-                <p>{user.email}</p>
+                <h2 className="font-semibold text-3xl flex items-center">
+                  {user.name}{" "}
+                  {user.verificated && (
+                    <img
+                      src={check}
+                      alt="verification mark"
+                      width={"25px"}
+                      className="ml-2 select-none"
+                    />
+                  )}
+                </h2>
+                <p>username: {user.username}</p>
               </div>
               <button
                 onClick={LogOut}

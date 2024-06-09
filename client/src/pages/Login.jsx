@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/login", {
-        username,
+        username: "@" + username,
         password,
       });
       setuser(response.data);
