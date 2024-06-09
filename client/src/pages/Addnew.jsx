@@ -25,7 +25,7 @@ const Addnew = () => {
 
   // functions of edit place
 
-  async function getPlace(params) {
+  async function getPlace() {
     if (!id) {
       return;
     }

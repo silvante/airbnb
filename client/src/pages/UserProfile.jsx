@@ -9,16 +9,16 @@ const UserProfile = () => {
   const { ready, user, setuser } = useContext(UserContext);
   const [redirect, setRedirect] = useState(null);
   const [logingout, setlogingout] = useState(false);
-  const [PlacesLength, setPlacesLength] = useState(0);
+  const [placeCount, setplaceCount] = useState(0);
   const [model, setmodel] = useState(false);
 
   async function getPlaceLength() {
     const { data } = await axios.get(`/places-of/${user._id}`);
-    setPlacesLength(data.length);
+    setplaceCount(data.length);
   }
   useEffect(() => {
     getPlaceLength();
-  }, []);
+  }, [ready]);
 
   const LogOut = () => {
     setmodel(true);
@@ -38,8 +38,6 @@ const UserProfile = () => {
     return <Navigate to={"/login"} />;
   }
 
-  console.log(PlacesLength);
-  console.log(ready);
 
   return (
     <div className="w-full flex justify-center px-basic">
@@ -68,7 +66,7 @@ const UserProfile = () => {
                 </h2>
                 <p>username: {user.username}</p>
                 <p>
-                  user has <span className="font-semibold">{PlacesLength}</span>{" "}
+                  user has <span className="font-semibold">{placeCount}</span>{" "}
                   appartment posts
                 </p>
               </div>
