@@ -86,7 +86,11 @@ const Booking = () => {
                 <div>
                   <p className="font-semibold flex items-center gap-1">
                     {owner.name}{" "}
-                    <img src={check} alt="verify icon" className=" w-5" />
+                    <img
+                      src={check}
+                      alt="verify icon"
+                      className=" w-5 select-none"
+                    />
                   </p>
                   <p>username: {owner.username}</p>
                 </div>
