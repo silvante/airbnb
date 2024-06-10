@@ -24,3 +24,7 @@ body {
 .bg-blur {
   backdrop-filter: blur(8px);
 }
+
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import check from "../assets/check.svg";
 import { imageTotalLink } from "..";
+import BookingWidget from "../components/BookingWidget";
 
 const Booking = () => {
   const { id } = useParams();
@@ -34,7 +35,7 @@ const Booking = () => {
 
   if (show) {
     return (
-      <div className="fixed top-0 left-0 w-full h-screen bg-white z-50">
+      <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 overflow-y-scroll scroll-none">
         <header className="w-full bg-white py-5 px-5 flex justify-between items-center fixed top-0">
           <button
             className="flex items-center text-xl"
@@ -44,12 +45,29 @@ const Booking = () => {
           </button>
           <p className="text-xl">total photos - {place.photos.length}</p>
         </header>
-        <section className="w-full flex justify-center">
-          <div>
+        <section className="w-full flex justify-center py-28">
+          <div className="w-normal space-y-3">
             {place.photos &&
               place.photos.map((photo) => {
-                return <img src={`${imageTotalLink}${photo}`} alt="" />;
+                return (
+                  <img
+                    key={photo}
+                    src={`${imageTotalLink}${photo}`}
+                    alt={photo}
+                    className="w-full rounded"
+                  />
+                );
               })}
+            <div className="w-full text-center pt-10">
+              <h3 className=" truncate text-xl font-semibold">{place.title}</h3>
+              <a
+                href={`https://maps.google.com/?q=${place.adress}`}
+                target="_blanck"
+                className=" hover:underline"
+              >
+                {place.adress}
+              </a>
+            </div>
           </div>
         </section>
       </div>
@@ -60,6 +78,7 @@ const Booking = () => {
 
   if (!place) return;
 
+  // main booking returns
   return (
     <div className="w-full flex justify-center">
       <div className="w-booking">
@@ -104,8 +123,8 @@ const Booking = () => {
             </button>
           )}
         </div>
-        <div className="my-5 grid grid-cols-[2fr_1fr]">
-          <div>
+        <div className="my-5 grid grid-cols-[2fr_1fr] gap-20">
+          <div className="space-y-6">
             <a
               target="_blanck"
               href={`https://maps.google.com/?q=${place.adress}`}
@@ -114,7 +133,7 @@ const Booking = () => {
               {place.adress}
             </a>
             {owner && (
-              <div className="py-5 flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <img
                   src={`${imageTotalLink}${owner.avatar}`}
                   alt={owner.name}
@@ -134,8 +153,35 @@ const Booking = () => {
                 </div>
               </div>
             )}
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">Perks</h3>
+              <div className="space-y-2">
+                {place.perks.map((perk) => {
+                  return <p key={perk}>{perk}</p>;
+                })}
+              </div>
+            </div>
+            <div className=" space-y-2">
+              <h3 className="text-xl font-semibold">About this place</h3>
+              <p>{place.descriptions}</p>
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-xl font-semibold">checking times</h1>
+              <div className="grid-cols-2 grid gap-5">
+                <div className="bg-white p-5 rounded border-base border-2">
+                  <p className="font-semibold">Check in</p>
+                  <p>{place.checkin} morning</p>
+                </div>
+                <div className="bg-white p-5 rounded border-base border-2">
+                  <p className="font-semibold">Check out</p>
+                  <p>{place.checkout} evening</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>data</div>
+          <div>
+            <BookingWidget place={place} />
+          </div>
         </div>
       </div>
     </div>
