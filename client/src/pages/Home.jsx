@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_PORT } from "../septer";
 import { Link } from "react-router-dom";
+import { imageTotalLink } from "..";
 
 const Home = () => {
   const [api, setapi] = useState([]);
@@ -26,7 +27,7 @@ const Home = () => {
                 <div className="bg-slate-300 rounded-2xl overflow-hidden relative">
                   <a
                     href={"#"}
-                    download={`http://localhost:7000/uploads/${place.photos[0]}`}
+                    download={`${imageTotalLink}${place.photos[0]}`}
                     className="absolute bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center top-3 right-3 text-lg opacity-70 hover:opacity-100 transition-all"
                   >
                     <i className="bx bxs-download"></i>

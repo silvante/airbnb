@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
+import { imageTotalLink } from "..";
 
 const MyPlaces = () => {
   const { user } = useContext(UserContext);
@@ -34,7 +35,7 @@ const MyPlaces = () => {
               <div className="flex items-center space-x-4">
                 <div className="w-48 h-32 overflow-hidden rounded ">
                   <img
-                    src={`http://localhost:7000/uploads/${place.photos[0]}`}
+                    src={`${imageTotalLink}${place.photos[0]}`}
                     alt={place.title}
                     className="w-full object-cover"
                   />

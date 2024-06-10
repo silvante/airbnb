@@ -4,6 +4,7 @@ import { Navigate, Link, NavLink, Outlet } from "react-router-dom";
 import axios from "axios";
 import Logout from "../components/Logout";
 import check from "../assets/check.svg";
+import { imageTotalLink } from "..";
 
 const UserProfile = () => {
   const { ready, user, setuser } = useContext(UserContext);
@@ -46,7 +47,7 @@ const UserProfile = () => {
           <div className="flex items-center space-x-5">
             <div className="w-[200px] h-[200px] bg-gray-200 rounded-full overflow-hidden flex justify-center items-center">
               <img
-                src={`http://localhost:7000/uploads/${user.avatar}`}
+                src={`${imageTotalLink}${user.avatar}`}
                 alt={user.name}
                 className="w-full h-full"
               />
