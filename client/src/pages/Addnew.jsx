@@ -231,7 +231,7 @@ const Addnew = () => {
             </div>
             <div className="flex flex-col space-y-1">
               <label>more photos is better*</label>
-              <div className="bg-fun w-normal h-64 p-2 grid grid-cols-5 grid-rows-2 rounded gap-2">
+              <div className="bg-fun w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 rounded gap-2">
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {
                     return (
@@ -241,7 +241,7 @@ const Addnew = () => {
                       >
                         <button
                           onClick={() => deletePhoto(link)}
-                          className=" absolute bg-white w-8 h-8 rounded-full bottom-2 right-2"
+                          className="absolute bg-white w-8 h-8 rounded-full bottom-2 right-2"
                         >
                           <i className="bx bx-trash"></i>
                         </button>
@@ -253,15 +253,17 @@ const Addnew = () => {
                       </div>
                     );
                   })}
-                <label className="bg-white text-3xl text-gray-500 rounded flex justify-center items-center cursor-pointer">
-                  <input
-                    multiple
-                    type="file"
-                    className="hidden"
-                    onChange={uploadPhotoFromDevice}
-                  />
-                  <i className="bx bxs-layer-plus"></i>
-                </label>
+                {addedPhotos.length < 15 && (
+                  <label className="bg-white text-3xl text-gray-500 rounded flex justify-center items-center cursor-pointer">
+                    <input
+                      multiple
+                      type="file"
+                      className="hidden"
+                      onChange={uploadPhotoFromDevice}
+                    />
+                    <i className="bx bxs-layer-plus"></i>
+                  </label>
+                )}
               </div>
               <label>choise nice photos of your place*</label>
             </div>
