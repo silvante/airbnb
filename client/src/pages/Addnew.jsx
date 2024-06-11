@@ -259,6 +259,7 @@ const Addnew = () => {
                       multiple
                       type="file"
                       className="hidden"
+                      accept="image/*"
                       onChange={uploadPhotoFromDevice}
                     />
                     <i className="bx bxs-layer-plus"></i>

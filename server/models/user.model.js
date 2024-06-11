@@ -15,6 +15,9 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "avatar.jpg",
   },
+  bio: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,

@@ -37,7 +37,7 @@ const Header = () => {
               height={"32px"}
               className="rounded-full"
             />
-            {!!user && <p className="ml-2">{user.name}</p>}
+            {!!user && <p className="ml-2 mr-2">{user.name}</p>}
           </Link>
           {!!user && (
             <Link

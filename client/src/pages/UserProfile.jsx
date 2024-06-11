@@ -39,7 +39,6 @@ const UserProfile = () => {
     return <Navigate to={"/login"} />;
   }
 
-
   return (
     <div className="w-full flex justify-center px-basic">
       <div className="w-base">
@@ -54,29 +53,34 @@ const UserProfile = () => {
             </div>
             <div className=" space-y-4">
               <div>
-                <h2 className="font-semibold text-3xl flex items-center">
+                <h2 className="font-semibold text-4xl flex items-center">
                   {user.name}{" "}
                   {user.verificated && (
                     <img
                       src={check}
                       alt="verification mark"
-                      width={"25px"}
+                      width={"30px"}
                       className="ml-2 select-none"
                     />
                   )}
                 </h2>
-                <p>username: {user.username}</p>
-                <p>
+                <p className="text-md">username: {user.username}</p>
+                <p className="text-md">
                   user has <span className="font-semibold">{placeCount}</span>{" "}
                   appartment posts
                 </p>
+                {user.bio && user.bio != "" && (
+                  <p className="text-md">
+                    bio: <span className=" font-semibold">{user.bio}</span>
+                  </p>
+                )}
               </div>
-              <button
+              {/* <button
                 onClick={LogOut}
                 className="bg-base text-white py-2 px-16 rounded-full"
               >
                 Log out
-              </button>
+              </button> */}
             </div>
           </div>
           <div>
