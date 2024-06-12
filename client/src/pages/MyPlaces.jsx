@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom";
 import { imageTotalLink } from "..";
+import { Link } from "react-router-dom";
 
 const MyPlaces = () => {
   const { user } = useContext(UserContext);
   const [places, setPlaces] = useState([]);
+
   async function getMyPlaces() {
     const { data } = await axios.get(`/places-of/${user._id}`);
     setPlaces(data);
@@ -50,7 +51,7 @@ const MyPlaces = () => {
                 <p>max munber of guests - {place.maxGuests}</p>
               </div>
               <div className="flex flex-col items-end space-y-3">
-                <Link
+                {/* <Link
                   to={`/profile/place/${place._id}`}
                   className="bg-base py-2 px-5 text-white rounded-full"
                 >
@@ -61,6 +62,13 @@ const MyPlaces = () => {
                   className="bg-black py-2 px-5 text-white rounded-full "
                 >
                   Settings <i className="bx bx-cog"></i>
+                </Link> */}
+                <Link
+                  to={`/profile/places/settings/${place._id}`}
+                  className="text-baseRed flex items-center "
+                >
+                  <i className="bx bx-cog text-xl mr-1"></i>
+                  <p className="hover:underline"> settings</p>
                 </Link>
               </div>
             </li>
