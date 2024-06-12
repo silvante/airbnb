@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import pfp from "../assets/home.jpg";
+import pfp from "../assets/avatar.jpg";
 import { UserContext } from "../UserContext";
+import { imageTotalLink } from "..";
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -31,7 +32,7 @@ const Header = () => {
           >
             <i className="bx bx-menu text-xl mr-3 ml-2"></i>
             <img
-              src={pfp}
+              src={user ? imageTotalLink + user.avatar : pfp}
               alt="logo"
               width={"32px"}
               height={"32px"}

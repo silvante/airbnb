@@ -86,7 +86,7 @@ const UserProfile = () => {
           <div>
             <Link
               to={`/edit-profile/${user._id}`}
-              className="py-2 px-4 flex items-center rounded-full hover:bg-gray-200 transition-all"
+              className="py-2 px-4 flex items-center rounded-full hover:bg-base hover:text-white transition-all"
             >
               Edit profile <i className="bx bx-edit-alt text-xl"></i>
             </Link>

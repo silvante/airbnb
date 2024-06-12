@@ -25,7 +25,7 @@ const MyPlaces = () => {
           total number - {places.length}
         </h2>
       </header>
-      <ul className="my-5">
+      <ul className="my-5 space-y-4">
         {places.map((place) => {
           return (
             <li
@@ -50,7 +50,10 @@ const MyPlaces = () => {
                 <p>max munber of guests - {place.maxGuests}</p>
               </div>
               <div className="flex flex-col items-end space-y-3">
-                <Link className="bg-base py-2 px-5 text-white rounded-full">
+                <Link
+                  to={`/profile/place/${place._id}`}
+                  className="bg-base py-2 px-5 text-white rounded-full"
+                >
                   view datails
                 </Link>
                 <Link

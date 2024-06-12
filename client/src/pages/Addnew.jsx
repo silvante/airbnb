@@ -125,42 +125,46 @@ const Addnew = () => {
   // handleSubmitForm
   async function savePlace(ev) {
     ev.preventDefault();
-    try {
-      if (id) {
-        // update place
-        const { data } = await axios.put(`/api/places/${id}`, {
-          title: title,
-          adress: adress,
-          photos: addedPhotos,
-          descriptions: descriptions,
-          perks: perks,
-          checkin: checkin,
-          checkout: checkout,
-          maxGuests: maxGests,
-          price: price,
-        });
-        setRedirect("/profile/places");
-        console.log(true);
-      } else if (perks.length > 0 && addedPhotos.length > 0) {
-        // add new place
-        const { data } = await axios.post("/api/places", {
-          title: title,
-          adress: adress,
-          photos: addedPhotos,
-          descriptions: descriptions,
-          perks: perks,
-          checkin: checkin,
-          checkout: checkout,
-          maxGuests: maxGests,
-          price: price,
-          owner: user._id,
-        });
-        setRedirect("/profile/places");
-      } else {
-        alert("enter full information");
+    if (addedPhotos.length < 5) {
+      alert("Minimum 5 photos of place");
+    } else {
+      try {
+        if (id) {
+          // update place
+          const { data } = await axios.put(`/api/places/${id}`, {
+            title: title,
+            adress: adress,
+            photos: addedPhotos,
+            descriptions: descriptions,
+            perks: perks,
+            checkin: checkin,
+            checkout: checkout,
+            maxGuests: maxGests,
+            price: price,
+          });
+          setRedirect("/profile/places");
+          console.log(true);
+        } else if (perks.length > 0 && addedPhotos.length > 0) {
+          // add new place
+          const { data } = await axios.post("/api/places", {
+            title: title,
+            adress: adress,
+            photos: addedPhotos,
+            descriptions: descriptions,
+            perks: perks,
+            checkin: checkin,
+            checkout: checkout,
+            maxGuests: maxGests,
+            price: price,
+            owner: user._id,
+          });
+          setRedirect("/profile/places");
+        } else {
+          alert("enter full information");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   }
 
