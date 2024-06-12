@@ -1,12 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { Profiler, useContext, useState } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import pfp from "../assets/avatar.jpg";
 import { UserContext } from "../UserContext";
 import { imageTotalLink } from "..";
+// import Typography from "@mui/material/Typography";
+// import Button from "@mui/material/Button";
+import Popper from "@mui/material/Popper";
+import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
+import Fade from "@mui/material/Fade";
+import Paper from "@mui/material/Paper";
+import Logout from "./Logout";
 
 const Header = () => {
   const { user } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
+  const [model, setModel] = useState(false);
+
+  if (redirect) {
+    <Navigate to={"/"} />;
+  }
+
   return (
     <header className="w-full flex justify-center px-basic">
       <div className="w-base py-4 flex justify-between items-center">
@@ -26,20 +40,93 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex space-x-2">
-          <Link
-            to={user ? "/profile" : "/login"}
-            className="flex items-center justify-between border rounded-full p-2 border-gray-300"
-          >
-            <i className="bx bx-menu text-xl mr-3 ml-2"></i>
-            <img
-              src={user ? imageTotalLink + user.avatar : pfp}
-              alt="logo"
-              width={"32px"}
-              height={"32px"}
-              className="rounded-full"
-            />
-            {!!user && <p className="ml-2 mr-2">{user.name}</p>}
-          </Link>
+          <PopupState variant="popper" popupId="demo-popup-popper">
+            {(popupState) => (
+              <div>
+                {!!user && (
+                  <button
+                    variant="contained"
+                    {...bindToggle(popupState)}
+                    to={user ? "/profile" : "/login"}
+                    className="flex items-center justify-between border rounded-full p-2 border-gray-300"
+                  >
+                    <i className="bx bx-menu text-xl mr-3 ml-2"></i>
+                    <img
+                      src={user ? imageTotalLink + user.avatar : pfp}
+                      alt="logo"
+                      width={"32px"}
+                      height={"32px"}
+                      className="rounded-full"
+                    />
+                    {!!user && <p className="ml-2 mr-2">{user.name}</p>}
+                  </button>
+                )}
+                {!user && (
+                  <Link
+                    to={"/login"}
+                    className="flex items-center justify-between border rounded-full p-2 border-gray-300"
+                  >
+                    <i className="bx bx-menu text-xl mr-3 ml-2"></i>
+                    <img
+                      src={pfp}
+                      alt="logo"
+                      width={"32px"}
+                      height={"32px"}
+                      className="rounded-full"
+                    />
+                  </Link>
+                )}
+                <Popper {...bindPopper(popupState)} transition>
+                  {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                      <Paper>
+                        <div className="mt-2">
+                          {!!user && (
+                            <div className=" border-b">
+                              <Link
+                                to={"/profile"}
+                                {...bindToggle(popupState)}
+                                className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
+                              >
+                                <i className="bx bx-user text-xl mr-2"></i> My
+                                profile
+                              </Link>
+                              <Link
+                                to={`/edit-profile/${user._id}`}
+                                {...bindToggle(popupState)}
+                                className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
+                              >
+                                <i className="bx bx-cog text-xl mr-2"></i>{" "}
+                                Profile settings
+                              </Link>
+                              <Link
+                                to={`/profile/places`}
+                                {...bindToggle(popupState)}
+                                className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
+                              >
+                                <i className="bx bx-home text-xl mr-2"></i> My
+                                places
+                              </Link>
+                            </div>
+                          )}
+                          {!!user && (
+                            <Link
+                              {...bindToggle(popupState)}
+                              onClick={() => setModel(true)}
+                              className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center text-baseRed"
+                            >
+                              <i className="bx bx-log-out text-xl mr-2"></i>
+                              log out
+                            </Link>
+                          )}
+                        </div>
+                      </Paper>
+                    </Fade>
+                  )}
+                </Popper>
+              </div>
+            )}
+          </PopupState>
           {!!user && (
             <Link
               to={"/add-new"}
@@ -50,6 +137,7 @@ const Header = () => {
           )}
         </div>
       </div>
+      {model && <Logout model={setModel} direct={setRedirect} />}
     </header>
   );
 };

@@ -112,9 +112,7 @@ const UserProfile = () => {
           <Outlet />
         </section>
       </div>
-      {model && (
-        <Logout model={setmodel} resLog={setlogingout} direct={setRedirect} />
-      )}
+      
     </div>
   );
 };

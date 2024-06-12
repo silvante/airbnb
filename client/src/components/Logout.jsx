@@ -8,10 +8,11 @@ const Logout = ({ model, resLog, direct }) => {
   const LogOut = () => {
     axios.post("/logout");
     setuser(null);
-    direct("/");
+    model(false);
+    direct(true);
   };
   return (
-    <div className="fixed w-full h-full top-0 left-0 bg-black/50 bg-blur flex justify-center items-center">
+    <div className="fixed w-full h-full top-0 left-0 bg-black/50 bg-blur z-50 flex justify-center items-center">
       <div className="bg-white rounded p-10 text-center space-y-2">
         <h2 className="text-2xl font-bold">Sure to logout?</h2>
         <p className="w-72">
