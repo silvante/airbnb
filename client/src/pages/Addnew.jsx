@@ -6,6 +6,7 @@ import { UserContext } from "../UserContext";
 const Addnew = () => {
   const { user, ready } = useContext(UserContext);
   const { id } = useParams();
+  const [placeDoc, setplaceDoc] = useState({});
 
   // states
 
@@ -40,6 +41,7 @@ const Addnew = () => {
     setmaxGests(res.maxGuests);
     setperks(res.perks);
     setprice(res.price);
+    setplaceDoc(res);
   }
 
   useEffect(() => {
@@ -170,6 +172,32 @@ const Addnew = () => {
 
   if (redirect) {
     return <Navigate to={redirect} />;
+  }
+
+  console.log(placeDoc);
+
+  if (ready && placeDoc.owner !== user._id) {
+    return (
+      <div className="w-full h-[60vh] px-basic flex flex-col items-center justify-center space-y-10">
+        <div className=" w-[50%] text-center">
+          <h1 className="text-4xl font-semibold">
+            Mr {user.name} this post is not belongs to you 🍘
+          </h1>
+          <p>
+            so please don't cheat anymore{" "}
+            <span className=" font-bold">OK?</span> 😁
+          </p>
+        </div>
+        <div className="space-x-10">
+          <Link className="text-baseRed hover:underline" to={"/"}>
+            go to homepage →
+          </Link>
+          <Link className="hover:underline" to={"/profile"}>
+            go to profile →
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -422,6 +450,14 @@ const Addnew = () => {
               </button>
             </div>
           </div>
+          {id && (
+            <div className="bg-white rounded w-full p-5 space-y-3">
+              <h3 className="text-xl font-bold text-baseRed">Danger zone</h3>
+              <div className="flex flex-col space-y-1">
+                <label>do you want to delete this place post ?</label>
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </div>

@@ -111,8 +111,10 @@ const Header = () => {
                           )}
                           {!!user && (
                             <Link
-                              {...bindToggle(popupState)}
-                              onClick={() => setModel(true)}
+                              // {...bindToggle(popupState)}
+                              onClick={() =>
+                                setModel(true) && { ...bindToggle(popupState) }
+                              }
                               className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center text-baseRed"
                             >
                               <i className="bx bx-log-out text-xl mr-2"></i>
