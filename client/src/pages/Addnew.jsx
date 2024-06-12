@@ -450,14 +450,6 @@ const Addnew = () => {
               </button>
             </div>
           </div>
-          {id && (
-            <div className="bg-white rounded w-full p-5 space-y-3">
-              <h3 className="text-xl font-bold text-baseRed">Danger zone</h3>
-              <div className="flex flex-col space-y-1">
-                <label>do you want to delete this place post ?</label>
-              </div>
-            </div>
-          )}
         </form>
       </div>
     </div>
