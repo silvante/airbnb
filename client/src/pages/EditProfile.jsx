@@ -6,11 +6,13 @@ import { imageTotalLink } from "..";
 
 const EditProfile = () => {
   const navigate = useNavigate();
-  const { user, ready } = useContext(UserContext);
+  const { user, ready, setuser } = useContext(UserContext);
   const [name, setname] = useState("");
   const [avatar, setavatar] = useState("");
   const [bio, setbio] = useState("");
   const [username, setusername] = useState("");
+  const [redirect, setredirect] = useState(false);
+
   const fatchData = async () => {
     const { data } = await axios.get(`/api/users/${user._id}`);
     setname(data[0].name);
@@ -42,13 +44,18 @@ const EditProfile = () => {
 
   async function handleEdit(e) {
     e.preventDefault();
-    await axios.put(`/api/users/${user._id}`, {
+    const { data } = await axios.put(`/api/users/${user._id}`, {
       avatar,
       name,
       username,
       bio,
     });
-    <Navigate to={"/profile"} />;
+    setuser(data[0]);
+    setredirect(true);
+  }
+
+  if (redirect) {
+    return <Navigate to={"/profile"} />;
   }
 
   if (!ready) {
