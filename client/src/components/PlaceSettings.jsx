@@ -130,13 +130,13 @@ const PlaceSettings = () => {
             <div className="w-full flex flex-col space-y-2">
               <button
                 onClick={() => setdeleting(false)}
-                className="rounded-full bg-basedark text-white py-3"
+                className="rounded-lg bg-basedark text-white py-3"
               >
                 Cancle
               </button>
               <button
                 onClick={() => setdanger(true)}
-                className="rounded-full bg-base text-white py-3"
+                className="rounded-lg bg-base text-white py-3"
               >
                 Delete anyway
               </button>
@@ -176,7 +176,7 @@ const PlaceSettings = () => {
                 type="text"
                 value={value}
                 onChange={(e) => setvalue(e.target.value)}
-                className="w-full rounded-xl py-2 px-3 border border-black outline-none"
+                className="w-full rounded-xl py-2 px-3 border-2 border-basedark outline-none"
                 placeholder="paste it here..."
               />
               <p className="text-center">_and_</p>

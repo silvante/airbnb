@@ -218,7 +218,7 @@ const Addnew = () => {
               <input
                 type="text"
                 placeholder="name here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-tra p-3 rounded-xl border-basedark border-2 outline-none"
                 value={title}
                 onChange={(e) => settitle(e.target.value)}
                 required
@@ -231,7 +231,7 @@ const Addnew = () => {
               <input
                 type="text"
                 placeholder="full adress here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-tra p-3 rounded-xl border-basedark border-2 outline-none"
                 value={adress}
                 onChange={(e) => setadress(e.target.value)}
                 required
@@ -246,7 +246,7 @@ const Addnew = () => {
                 <input
                   type="text"
                   placeholder="full adress here..."
-                  className="w-hight bg-fun p-3 rounded border outline-none"
+                  className="w-hight bg-tra p-3 rounded-xl border-basedark border-2 outline-none"
                   value={linkedPhoto}
                   onChange={(e) => setlinkedPhoto(e.target.value)}
                 />
@@ -265,13 +265,13 @@ const Addnew = () => {
             </div>
             <div className="flex flex-col space-y-1">
               <label>more photos is better*</label>
-              <div className="bg-fun w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 rounded-lg gap-2">
+              <div className="bg-tra w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 border-2 border-basedark rounded-xl gap-2">
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {
                     return (
                       <div
                         key={link}
-                        className="rounded-lg overflow-hidden flex relative"
+                        className="rounded-lg overflow-hidden flex relative border-2 border-basedark"
                       >
                         <button
                           onClick={() => deletePhoto(link)}
@@ -288,7 +288,7 @@ const Addnew = () => {
                     );
                   })}
                 {addedPhotos.length < 15 && (
-                  <label className="bg-white text-3xl text-gray-500 rounded-lg flex justify-center items-center cursor-pointer">
+                  <label className="bg-basedark text-3xl text-white rounded-lg flex justify-center items-center cursor-pointer">
                     <input
                       multiple
                       type="file"
@@ -296,7 +296,7 @@ const Addnew = () => {
                       accept="image/*"
                       onChange={uploadPhotoFromDevice}
                     />
-                    <i className="bx bxs-layer-plus"></i>
+                    <i className='bx bxs-image'></i>
                   </label>
                 )}
               </div>
@@ -310,7 +310,7 @@ const Addnew = () => {
               <textarea
                 type="text"
                 placeholder="Descriptions here..."
-                className="w-hight bg-fun p-3 rounded border outline-none resize-none h-40"
+                className="w-hight bg-tra p-3 rounded-xl border-basedark border-2 outline-none resize-none h-40"
                 value={descriptions}
                 onChange={(e) => setdescriptions(e.target.value)}
                 required
@@ -393,7 +393,7 @@ const Addnew = () => {
               <input
                 type="time"
                 placeholder="time here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-transparent p-3 rounded-xl border-2 border-basedark outline-none"
                 value={checkin}
                 onChange={(e) => setcheckin(e.target.value)}
                 required
@@ -404,7 +404,7 @@ const Addnew = () => {
               <input
                 type="time"
                 placeholder="time here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-transparent p-3 rounded-xl border-2 border-basedark outline-none"
                 value={checkout}
                 onChange={(e) => setcheckout(e.target.value)}
                 required
@@ -415,7 +415,7 @@ const Addnew = () => {
               <input
                 type="number"
                 placeholder="number here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-transparent p-3 rounded-xl border-2 border-basedark outline-none"
                 value={maxGests}
                 onChange={(e) => setmaxGests(e.target.value)}
                 required
@@ -429,7 +429,7 @@ const Addnew = () => {
               <input
                 type="number"
                 placeholder="price...$"
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight bg-transparent p-3 rounded-xl border-2 border-basedark outline-none"
                 value={price}
                 onChange={(e) => setprice(e.target.value)}
                 required
@@ -446,7 +446,7 @@ const Addnew = () => {
               <button
                 onClick={hendleResetForm}
                 type="reset"
-                className="py-2 px-5 bg-basedark text-white rounded-lg"
+                className="py-2 px-5 bg-black text-white rounded-lg"
               >
                 clear all
               </button>

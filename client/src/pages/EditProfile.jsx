@@ -104,7 +104,7 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="edit name here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
                 onChange={(e) => setname(e.target.value)}
                 value={name}
                 required
@@ -115,7 +115,7 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="edit username here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
                 onChange={(e) => setusername(e.target.value)}
                 value={username}
                 required
@@ -126,13 +126,13 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="bio here..."
-                className="w-hight bg-fun p-3 rounded border outline-none"
+                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
                 value={bio}
                 onChange={(e) => setbio(e.target.value)}
               />
             </div>
           </div>
-          <div className="bg-white rounded w-full p-5 space-y-3">
+          <div className="bg-white rounded-lg w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">Submit</h3>
             <p>submit if you are ready*</p>
             <button className="bg-base text-white py-2 px-8 rounded-lg">

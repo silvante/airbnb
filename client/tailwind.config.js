@@ -16,10 +16,12 @@ export default {
         fun: "#f2f4f5",
       },
       borderColor: {
+        basedark: "#282424",
         base: "#ff385c",
       },
       textColor: {
         baseRed: "#ff385c",
+        basedark: "#282424",
       },
       outlineColor: {
         base: "#ff385c",
