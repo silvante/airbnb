@@ -176,7 +176,7 @@ const Addnew = () => {
 
   console.log(placeDoc);
 
-  if (ready && placeDoc.owner !== user._id) {
+  if (ready && id && placeDoc.owner !== user._id) {
     return (
       <div className="w-full h-[60vh] px-basic flex flex-col items-center justify-center space-y-10">
         <div className=" w-[50%] text-center">
