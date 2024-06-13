@@ -27,7 +27,7 @@ const Header = () => {
         <Link to={"/"}>
           <img src={logo} alt="logo of this site" width={"110px"} />
         </Link>
-        <div className="flex items-center justify-between rounded-full py-2 shadow-lg border border-gray-300">
+        <div className="flex items-center justify-between rounded-lg py-2 shadow-lg border border-gray-300">
           <Link className="font-normal px-4">Stays</Link>
           <Link className="font-normal px-4 border-l border-gray-300">
             Experiences
@@ -48,7 +48,7 @@ const Header = () => {
                     variant="contained"
                     {...bindToggle(popupState)}
                     to={user ? "/profile" : "/login"}
-                    className="flex items-center justify-between border rounded-full p-2 border-gray-300"
+                    className="flex items-center justify-between border rounded-lg p-2 border-gray-300"
                   >
                     <i className="bx bx-menu text-xl mr-3 ml-2"></i>
                     <img
@@ -64,7 +64,7 @@ const Header = () => {
                 {!user && (
                   <Link
                     to={"/login"}
-                    className="flex items-center justify-between border rounded-full p-2 border-gray-300"
+                    className="flex items-center justify-between border rounded-lg p-2 border-gray-300"
                   >
                     <i className="bx bx-menu text-xl mr-3 ml-2"></i>
                     <img
@@ -78,11 +78,11 @@ const Header = () => {
                 )}
                 <Popper {...bindPopper(popupState)} transition>
                   {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
+                    <Fade {...TransitionProps} timeout={200}>
                       <Paper>
                         <div className="mt-2">
                           {!!user && (
-                            <div className=" border-b">
+                            <div className="border-b">
                               <Link
                                 to={"/profile"}
                                 {...bindToggle(popupState)}
@@ -139,7 +139,7 @@ const Header = () => {
           {!!user && (
             <Link
               to={"/add-new"}
-              className="bg-base rounded-full px-3 text-white flex items-center"
+              className="bg-base rounded-lg px-3 text-white flex items-center"
             >
               <i className="bx bx-plus text-2xl"></i> Add new place
             </Link>

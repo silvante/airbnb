@@ -31,10 +31,10 @@ const MyPlaces = () => {
           return (
             <li
               key={place._id}
-              className="w-full bg-white p-5 rounded flex justify-between items-center"
+              className="w-full bg-white p-5 rounded-xl flex justify-between items-center"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-48 h-32 overflow-hidden rounded ">
+                <div className="w-48 h-32 overflow-hidden rounded-lg ">
                   <img
                     src={`${imageTotalLink}${place.photos[0]}`}
                     alt={place.title}

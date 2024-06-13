@@ -72,7 +72,7 @@ const EditProfile = () => {
           <h3 className="text-2xl font-bold">Edit profile "{user.name}"</h3>
           <Link
             to={"/profile"}
-            className="py-2 px-5 bg-base text-white rounded-full"
+            className="py-2 px-5 bg-base text-white rounded-lg"
           >
             cancle editing
           </Link>
@@ -135,7 +135,7 @@ const EditProfile = () => {
           <div className="bg-white rounded w-full p-5 space-y-3">
             <h3 className="text-xl font-bold">Submit</h3>
             <p>submit if you are ready*</p>
-            <button className="bg-base text-white py-2 px-4 rounded-full">
+            <button className="bg-base text-white py-2 px-8 rounded-lg">
               save profile changes
             </button>
           </div>

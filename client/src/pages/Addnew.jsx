@@ -205,7 +205,7 @@ const Addnew = () => {
       <div className="w-base">
         <nav className="w-full flex justify-between items-center py-5">
           <h2 className="font-bold text-2xl">Form for place</h2>
-          <Link className="px-5 py-2 rounded-full bg-base text-white" to={"/"}>
+          <Link className="px-5 py-2 rounded-lg bg-base text-white" to={"/"}>
             Cancle editing
           </Link>
         </nav>
@@ -250,30 +250,32 @@ const Addnew = () => {
                   value={linkedPhoto}
                   onChange={(e) => setlinkedPhoto(e.target.value)}
                 />
-                <button
-                  onClick={UploadImageByLink}
-                  disabled={addingPhoto}
-                  className={`w-44 text-white py-2 rounded-full ${
-                    addingPhoto ? "bg-base/55" : "bg-base"
-                  }`}
-                >
-                  {!addingPhoto ? "add image" : "adding..."}
-                </button>
+                {addedPhotos.length < 15 && (
+                  <button
+                    onClick={UploadImageByLink}
+                    disabled={addingPhoto}
+                    className={`w-44 text-white py-3 rounded-lg ${
+                      addingPhoto ? "bg-base/55" : "bg-base"
+                    }`}
+                  >
+                    {!addingPhoto ? "add image" : "adding..."}
+                  </button>
+                )}
               </div>
             </div>
             <div className="flex flex-col space-y-1">
               <label>more photos is better*</label>
-              <div className="bg-fun w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 rounded gap-2">
+              <div className="bg-fun w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 rounded-lg gap-2">
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {
                     return (
                       <div
                         key={link}
-                        className="rounded overflow-hidden flex relative"
+                        className="rounded-lg overflow-hidden flex relative"
                       >
                         <button
                           onClick={() => deletePhoto(link)}
-                          className="absolute bg-white w-8 h-8 rounded-full bottom-2 right-2"
+                          className="absolute bg-white w-8 h-8 rounded-lg bottom-2 right-2"
                         >
                           <i className="bx bx-trash"></i>
                         </button>
@@ -286,7 +288,7 @@ const Addnew = () => {
                     );
                   })}
                 {addedPhotos.length < 15 && (
-                  <label className="bg-white text-3xl text-gray-500 rounded flex justify-center items-center cursor-pointer">
+                  <label className="bg-white text-3xl text-gray-500 rounded-lg flex justify-center items-center cursor-pointer">
                     <input
                       multiple
                       type="file"
@@ -437,14 +439,14 @@ const Addnew = () => {
             <div className="space-x-3">
               <button
                 type="submit"
-                className="py-2 px-5 bg-base rounded-full text-white"
+                className="py-2 px-5 bg-base rounded-lg text-white"
               >
                 Submit & publish
               </button>
               <button
                 onClick={hendleResetForm}
                 type="reset"
-                className="py-2 px-5 bg-black text-white rounded-full"
+                className="py-2 px-5 bg-basedark text-white rounded-lg"
               >
                 clear all
               </button>

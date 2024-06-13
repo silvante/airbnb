@@ -130,7 +130,7 @@ const PlaceSettings = () => {
             <div className="w-full flex flex-col space-y-2">
               <button
                 onClick={() => setdeleting(false)}
-                className="rounded-full bg-black text-white py-3"
+                className="rounded-full bg-basedark text-white py-3"
               >
                 Cancle
               </button>

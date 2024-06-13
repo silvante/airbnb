@@ -31,7 +31,7 @@ const Singup = () => {
     }
   };
   return (
-    <div className="w-full flex justify-center px-basic">
+    <div className="w-full flex justify-center px-basic py-5">
       <div className="w-base flex items-center flex-col">
         <h2 className="text-2xl font-bold">Sing up</h2>
         <form className=" space-y-2 w-80" onSubmit={handleSubmit}>
@@ -39,7 +39,7 @@ const Singup = () => {
             <label>name*</label>
             <input
               type="text"
-              className="bg-gray-200 outline-none px-5 py-2 rounded-full"
+              className="bg-gray-200 outline-none px-5 py-2 rounded-lg"
               placeholder="name here"
               value={name}
               required
@@ -50,7 +50,7 @@ const Singup = () => {
             <label>username*</label>
             <input
               type="text"
-              className="bg-gray-200 outline-none px-5 py-2 rounded-full"
+              className="bg-gray-200 outline-none px-5 py-2 rounded-lg"
               placeholder="unique name here"
               value={username}
               required
@@ -61,7 +61,7 @@ const Singup = () => {
             <label>email*</label>
             <input
               type="email"
-              className="bg-gray-200 outline-none px-5 py-2 rounded-full"
+              className="bg-gray-200 outline-none px-5 py-2 rounded-lg"
               placeholder="email here"
               value={email}
               required
@@ -72,7 +72,7 @@ const Singup = () => {
             <label>password*</label>
             <input
               type="password"
-              className="bg-gray-200 outline-none px-5 py-2 rounded-full"
+              className="bg-gray-200 outline-none px-5 py-2 rounded-lg"
               placeholder="password"
               value={password}
               required
@@ -84,7 +84,7 @@ const Singup = () => {
           <button
             className={`${
               creating ? "bg-base/90" : "bg-base"
-            } w-full text-white py-2 rounded-full`}
+            } w-full text-white py-2 rounded-lg`}
             type="submit"
           >
             {creating ? "Singing up..." : "Sing up"}

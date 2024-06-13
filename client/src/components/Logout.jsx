@@ -15,20 +15,20 @@ const Logout = ({ model, resLog, direct }) => {
     <div className="fixed w-full h-full top-0 left-0 bg-black/50 bg-blur z-50 flex justify-center items-center">
       <div className="bg-white rounded p-10 text-center space-y-2">
         <h2 className="text-2xl font-bold">Sure to logout?</h2>
-        <p className="w-72">
+        <p className=" w-80">
           if you logout now you should login again or create a new account to
           post or write a comments!?
         </p>
         <div className="w-full flex flex-col space-y-2">
           <button
             onClick={() => model(false)}
-            className="bg-black py-2 px-5 text-white rounded-full"
+            className="bg-basedark py-3 px-5 text-white rounded-lg"
           >
             Cancle
           </button>
           <button
             onClick={LogOut}
-            className="bg-base py-2 px-5 text-white rounded-full"
+            className="bg-base py-3 px-5 text-white rounded-lg"
           >
             Logout anyway
           </button>

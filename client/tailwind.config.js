@@ -12,6 +12,7 @@ export default {
       },
       backgroundColor: {
         base: "#ff385c",
+        basedark: "#282424",
         fun: "#f2f4f5",
       },
       borderColor: {
