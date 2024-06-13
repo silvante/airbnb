@@ -22,7 +22,7 @@ const Header = () => {
   }
 
   return (
-    <header className="w-full flex justify-center px-basic">
+    <header className="w-full flex justify-center px-basic shadow-md">
       <div className="w-base py-4 flex justify-between items-center">
         <Link to={"/"}>
           <img src={logo} alt="logo of this site" width={"110px"} />
@@ -106,6 +106,13 @@ const Header = () => {
                               >
                                 <i className="bx bx-home text-xl mr-2"></i> My
                                 places
+                              </Link>
+                              <Link
+                                to={`/profile/bookings`}
+                                {...bindToggle(popupState)}
+                                className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
+                              >
+                                <i className="bx bx-list-ul text-xl mr-2"></i> My bookings
                               </Link>
                             </div>
                           )}

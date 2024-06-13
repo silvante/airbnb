@@ -75,12 +75,6 @@ const UserProfile = () => {
                   </p>
                 )}
               </div>
-              {/* <button
-                onClick={LogOut}
-                className="bg-base text-white py-2 px-16 rounded-full"
-              >
-                Log out
-              </button> */}
             </div>
           </div>
           <div>
@@ -112,7 +106,6 @@ const UserProfile = () => {
           <Outlet />
         </section>
       </div>
-      
     </div>
   );
 };

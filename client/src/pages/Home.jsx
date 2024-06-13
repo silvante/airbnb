@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div className="w-full flex justify-center px-basic">
       <div className="w-base">
-        <section className="w-full grid grid-cols-4 gap-8">
+        <section className="w-full grid grid-cols-4 gap-8 my-5">
           {api.map((place) => {
             return (
               <Link
