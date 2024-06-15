@@ -33,7 +33,6 @@ const Booking = () => {
   }, [place]);
 
   // show all photos event
-
   if (show) {
     return (
       <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 overflow-y-scroll scroll-none">
@@ -185,7 +184,16 @@ const Booking = () => {
           </div>
         </div>
         <div>
-          <CommentForm />
+          <CommentForm
+            placeId={place._id}
+            owner={
+              owner && {
+                _id: owner._id,
+                username: owner.username,
+                verificated: owner.verificated,
+              }
+            }
+          />
         </div>
       </div>
     </div>
