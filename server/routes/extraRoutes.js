@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
 const Place = require("../models/places.model");
+const Comment = require("../models/comment.model");
 
 const uploadDir = path.join("D:/airbnb/server", "/uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -50,43 +51,32 @@ router.post("/upload", photosMiddleware.array("photos", 20), (req, res) => {
   }
 });
 
-router.get("/places-of/:id", async (req, res) => {
+router.get("/comments-of/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const usersPlaces = await Place.find({ owner: id });
-    if (!usersPlaces) {
+    const placeComments = await Comment.find({ to: id });
+    if (!placeComments) {
       res.status(404).send("this user has nopo places");
     }
-    res.status(200).send(usersPlaces);
+    res.status(200).send(placeComments);
   } catch (error) {
     console.log(error);
     res.send(error);
   }
 });
 
-// const profileMidleware = multer({ dest: "uploads" });
-
-// router.post(
-//   "/upload-avatar",
-//   profileMidleware.single("profile"),
-//   (req, res) => {
-//     try {
-//       const uploadedFile = req.file;
-//       if (!uploadedFile) {
-//         return res.status(400).send({ err: "no file was uploaded" });
-//       }
-
-//       const { path, originalname } = uploadedFile;
-//       const nameParts = originalname.split(".");
-//       const extantion = nameParts[nameParts.length - 1];
-//       const newPath = "profile_" + path + "." + extantion;
-//       const uploadedFilePath = newPath.replace("uploads", "");
-//       res.status(201).json(uploadedFilePath);
-//     } catch (error) {
-//       res.send(error);
-//       console.log(error);
-//     }
-//   }
-// );
+router.get("/places-of/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const userPLace = await Place.find({ owner: id });
+    if (!userPLace) {
+      res.status(404).send("this user has nopo places");
+    }
+    res.status(200).send(userPLace);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
 
 module.exports = router;

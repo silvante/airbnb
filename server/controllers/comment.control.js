@@ -26,23 +26,23 @@ const getComment = async (req, res) => {
   }
 };
 
-const sendComment = async () => {
+const sendComment = async (req, res) => {
   try {
     const { to, comment, commentor, rating } = req.body;
-    const newComment = Comment.create({
+    const newComment = await Comment.create({
       to,
       comment,
       commentor,
       rating,
     });
-    return res.status(201).send(newComment);
+    res.status(201).json(newComment);
   } catch (err) {
     console.log(err);
     res.send(err);
   }
 };
 
-const editComment = async () => {
+const editComment = async (req, res) => {
   const id = req.params.id;
   try {
     const { rating, comment } = req.body;
