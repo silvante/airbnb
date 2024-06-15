@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import check from "../assets/check.svg";
 import { imageTotalLink } from "..";
 import BookingWidget from "../components/BookingWidget";
+import CommentForm from "../components/CommentForm";
 
 const Booking = () => {
   const { id } = useParams();
@@ -182,6 +183,9 @@ const Booking = () => {
           <div>
             <BookingWidget place={place} />
           </div>
+        </div>
+        <div>
+          <CommentForm />
         </div>
       </div>
     </div>

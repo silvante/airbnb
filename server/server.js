@@ -12,6 +12,7 @@ const profile = require("./routes/profile");
 const logout = require("./routes/logout");
 const extraRoutes = require("./routes/extraRoutes");
 const places = require("./routes/Places");
+const comment = require("./routes/comment");
 
 connectDataBase();
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -33,6 +34,7 @@ const port = process.env.PORT;
 // routes
 app.use("/api/users", users);
 app.use("/api/places", places);
+app.use("/api/comments", comment);
 app.use("/login", router);
 app.use("/profile", profile);
 app.use("/logout", logout);
