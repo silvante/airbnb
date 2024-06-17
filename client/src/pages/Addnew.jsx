@@ -2,6 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
+import wifi from "../assets/wifi.svg";
+import privateroom from "../assets/private.svg";
+import tv from "../assets/tv.svg";
+import radio from "../assets/radio.svg";
+import pets from "../assets/pets.svg";
+import cosino from "../assets/cosino.svg";
+import game from "../assets/game.svg";
+import parking from "../assets/parking.svg";
 
 const Addnew = () => {
   const { user, ready } = useContext(UserContext);
@@ -296,7 +304,7 @@ const Addnew = () => {
                       accept="image/*"
                       onChange={uploadPhotoFromDevice}
                     />
-                    <i className='bx bxs-image'></i>
+                    <i className="bx bxs-image"></i>
                   </label>
                 )}
               </div>
@@ -321,65 +329,85 @@ const Addnew = () => {
             <h3 className="text-xl font-bold">perks</h3>
             <label>check perks which you have*</label>
             <div className="w-normal space-y-1 grid grid-cols-2 grid-rows-3">
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("wi-fi")}
                   name="wi-fi"
                 />
-                <i className="bx bx-wifi text-3xl px-2"></i>
+                <img src={wifi} alt={"wifi"} width={"23px"} />
                 <span>Free Wi-Fi</span>
               </label>
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("parking")}
                   name="parking"
                 />
-                <i className="bx bxs-car-garage text-2xl px-2"></i>
+                <img src={parking} alt={"parking"} width={"23px"} />
                 <span>Free parking spot</span>
               </label>
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("tv")}
                   name="tv"
                 />
-                <i className="bx bx-tv text-3xl px-2"></i>
+                <img src={tv} alt={"tv"} width={"23px"} />
                 <span>TV station</span>
               </label>
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("pets")}
                   name="pets"
                 />
-                <i className="bx bxs-dog text-3xl px-2"></i>
+                <img src={pets} alt={"pets"} width={"23px"} />
                 <span>allowed for pets</span>
               </label>
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("private")}
                   name="private"
                 />
-                <i className="bx bx-door-open text-3xl px-2"></i>
+                <img src={privateroom} alt={"privateroom"} width={"23px"} />
                 <span>Private extrance</span>
               </label>
-              <label className="w-smally p-3 rounded hover:bg-fun flex items-center">
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
                 <input
                   type="checkbox"
                   onChange={handeleCbChange}
                   checked={perks.includes("radio")}
                   name="radio"
                 />
-                <i className="bx bx-radio text-3xl px-2"></i>
+                <img src={radio} alt={"radio"} width={"23px"} />
                 <span>radio</span>
+              </label>
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  checked={perks.includes("game")}
+                  name="game"
+                />
+                <img src={game} alt={"game"} width={"23px"} />
+                <span>game</span>
+              </label>
+              <label className="w-smally p-3 rounded hover:bg-fun flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  onChange={handeleCbChange}
+                  checked={perks.includes("cosino")}
+                  name="cosino"
+                />
+                <img src={cosino} alt={"cosino"} width={"23px"} />
+                <span>cosino</span>
               </label>
             </div>
           </div>

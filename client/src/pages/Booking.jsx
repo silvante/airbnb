@@ -5,6 +5,7 @@ import check from "../assets/check.svg";
 import { imageTotalLink } from "..";
 import BookingWidget from "../components/BookingWidget";
 import CommentForm from "../components/CommentForm";
+import PerkInBooking from "../components/PerkInBooking";
 
 const Booking = () => {
   const { id } = useParams();
@@ -153,14 +154,7 @@ const Booking = () => {
                 </div>
               </div>
             )}
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold">Perks</h3>
-              <div className="space-y-2">
-                {place.perks.map((perk) => {
-                  return <p key={perk}>{perk}</p>;
-                })}
-              </div>
-            </div>
+            <PerkInBooking perks={place.perks} />
             <div className=" space-y-2">
               <h3 className="text-xl font-semibold">About this place</h3>
               <p>{place.descriptions}</p>
