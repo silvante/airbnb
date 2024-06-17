@@ -6,6 +6,7 @@ import { imageTotalLink } from "..";
 import BookingWidget from "../components/BookingWidget";
 import CommentForm from "../components/CommentForm";
 import PerkInBooking from "../components/PerkInBooking";
+import HostBooking from "../components/HostBooking";
 
 const Booking = () => {
   const { id } = useParams();
@@ -172,6 +173,7 @@ const Booking = () => {
                 </div>
               </div>
             </div>
+            <HostBooking owner={owner && owner} />
           </div>
           <div>
             <BookingWidget place={place} />
