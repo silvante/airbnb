@@ -125,7 +125,10 @@ const CommentForm = ({ placeId, ownerId }) => {
               {comments.slice(0, sliceCount).map((comment) => {
                 return (
                   <li key={comment._id} className="flex gap-2 w-full">
-                    <Link className="w-[42px]">
+                    <Link
+                      className="w-[42px]"
+                      to={`/user/${comment.commentor.username}`}
+                    >
                       <img
                         src={imageTotalLink + comment.commentor.avatar}
                         alt=""
@@ -135,7 +138,10 @@ const CommentForm = ({ placeId, ownerId }) => {
                       />
                     </Link>
                     <div className="space-y-1 flex-1">
-                      <Link className="flex w-full items-center font-semibold hover:text-blue-600 hover:underline">
+                      <Link
+                        className="flex w-full items-center font-semibold hover:text-blue-600 hover:underline"
+                        to={`/user/${comment.commentor.username}`}
+                      >
                         {comment.commentor.username}
                         {""}
                         {comment.commentor.verificated && (
