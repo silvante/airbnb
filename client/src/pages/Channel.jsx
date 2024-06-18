@@ -4,6 +4,7 @@ import { imageTotalLink } from "..";
 import check from "../assets/check.svg";
 import axios from "axios";
 import GridPlaces from "../components/GridPlaces";
+import PageIsEmpty from "../components/PageIsEmpty";
 
 const Channel = () => {
   const { username } = useParams();
@@ -71,7 +72,10 @@ const Channel = () => {
             <h3 className="text-2xl font-semibold">User's posts</h3>
             <button className="text-2xl font-semibold">Places</button>
           </nav>
-          <GridPlaces places={api} />
+          {api.length > 0 && <GridPlaces places={api} />}
+          {api.length <= 0 && (
+            <PageIsEmpty text={"This user has no posts yet"} />
+          )}
         </div>
       </div>
     </div>

@@ -32,8 +32,8 @@ const App = () => {
         <Route path="/sing-up" element={<Singup />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/profile" element={<UserProfile />}>
-          <Route index path="/profile/bookings" element={<MyBookings />} />
-          <Route path="/profile/places" element={<MyPlaces />} />
+          <Route path="/profile/bookings" element={<MyBookings />} />
+          <Route index path="/profile/places" element={<MyPlaces />} />
           <Route
             path="/profile/places/settings/:id"
             element={<PlaceSettings />}

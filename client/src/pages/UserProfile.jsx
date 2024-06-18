@@ -90,15 +90,15 @@ const UserProfile = () => {
           <div className="profile-navigation flex rounded-lg shadow-lg border border-gray-300 overflow-hidden">
             <NavLink
               className="px-5 py-2 transition-all flex items-center"
-              to={"/profile/bookings"}
-            >
-              <i className="bx bx-list-ul text-xl mr-1"></i> My bookings
-            </NavLink>
-            <NavLink
-              className="px-5 py-2 border-l border-gray-300 transition-all flex items-center"
               to={"/profile/places"}
             >
               <i className="bx bx-home text-xl mr-1"></i> My accommodations
+            </NavLink>
+            <NavLink
+              className="px-5 py-2 transition-all flex items-center border-l border-gray-300"
+              to={"/profile/bookings"}
+            >
+              <i className="bx bx-list-ul text-xl mr-1"></i> My bookings
             </NavLink>
           </div>
         </div>

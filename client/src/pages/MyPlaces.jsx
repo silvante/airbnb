@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 import GridPlaces from "../components/GridPlaces";
+import empty from "../assets/page-is-empty.svg";
+import PageIsEmpty from "../components/PageIsEmpty";
 
 const MyPlaces = () => {
   const { user } = useContext(UserContext);
@@ -25,7 +27,8 @@ const MyPlaces = () => {
           total number - {places.length}
         </h2>
       </header>
-      <GridPlaces places={places} />
+      {places.length > 0 && <GridPlaces places={places} />}
+      {places.length <= 0 && <PageIsEmpty text={"You have no places yet"} />}
     </div>
   );
 };
