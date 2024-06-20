@@ -104,7 +104,7 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="edit name here..."
-                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
+                className="w-hight p-3 rounded-xl bg-slate-200 outline-none"
                 onChange={(e) => setname(e.target.value)}
                 value={name}
                 required
@@ -115,7 +115,7 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="edit username here..."
-                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
+                className="w-hight p-3 rounded-xl bg-slate-200 outline-none"
                 onChange={(e) => setusername(e.target.value)}
                 value={username}
                 required
@@ -126,7 +126,7 @@ const EditProfile = () => {
               <input
                 type="text"
                 placeholder="bio here..."
-                className="w-hight p-3 rounded-xl border-2 border-basedark outline-none"
+                className="w-hight p-3 rounded-xl bg-slate-200 outline-none"
                 value={bio}
                 onChange={(e) => setbio(e.target.value)}
               />
