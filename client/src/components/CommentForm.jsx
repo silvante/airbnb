@@ -8,6 +8,12 @@ import check from "../assets/check.svg";
 import { Link } from "react-router-dom";
 import { imageTotalLink } from "..";
 
+import Popper from "@mui/material/Popper";
+import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
+import Fade from "@mui/material/Fade";
+import Paper from "@mui/material/Paper";
+import Logout from "./Logout";
+
 const CommentForm = ({ placeId, ownerId }) => {
   const { user, ready } = useContext(UserContext);
   const [value, setValue] = useState(0);
@@ -60,14 +66,14 @@ const CommentForm = ({ placeId, ownerId }) => {
     setcomments(data);
   }
 
-  useEffect(() => {
-    getComments();
-  }, []);
-
   function handleUnslice(params) {
     setsliceCount(Infinity);
     setshowBTN(false);
   }
+
+  useEffect(() => {
+    getComments();
+  }, [handleComment]);
 
   return (
     <div className="space-y-5 w-full">
@@ -124,7 +130,10 @@ const CommentForm = ({ placeId, ownerId }) => {
             <ul className="space-y-5 w-full block">
               {comments.slice(0, sliceCount).map((comment) => {
                 return (
-                  <li key={comment._id} className="flex gap-2 w-full">
+                  <li
+                    key={comment._id}
+                    className="flex items-start gap-2 w-full"
+                  >
                     <Link
                       className="w-[42px]"
                       to={`/user/${comment.commentor.username}`}
@@ -171,10 +180,60 @@ const CommentForm = ({ placeId, ownerId }) => {
                         />
                       </p>
                     </div>
+
+                    <PopupState variant="popper" popupId="demo-popup-popper">
+                      {(popupState) => (
+                        <div>
+                          <button
+                            variant="contained"
+                            {...bindToggle(popupState)}
+                          >
+                            <i className="bx bx-dots-vertical-rounded text-xl"></i>
+                          </button>
+                          <Popper {...bindPopper(popupState)} transition>
+                            {({ TransitionProps }) => (
+                              <Fade {...TransitionProps} timeout={200}>
+                                <Paper>
+                                  <div className="mt-2">
+                                    <div className="border-b">
+                                      {user._id == comment.commentor.id && (
+                                        <Link
+                                          {...bindToggle(popupState)}
+                                          className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center"
+                                        >
+                                          <i className="bx bx-edit text-xl mr-2"></i>{" "}
+                                          Edit
+                                        </Link>
+                                      )}
+                                      <Link
+                                        {...bindToggle(popupState)}
+                                        className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center"
+                                      >
+                                        <i className="bx bx-copy-alt text-xl mr-2"></i>{" "}
+                                        Copy
+                                      </Link>
+                                    </div>
+                                    {user._id == comment.commentor.id && (
+                                      <Link
+                                        {...bindToggle(popupState)}
+                                        className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center text-baseRed"
+                                      >
+                                        <i className="bx bx-trash text-xl mr-2"></i>
+                                        Delete
+                                      </Link>
+                                    )}
+                                  </div>
+                                </Paper>
+                              </Fade>
+                            )}
+                          </Popper>
+                        </div>
+                      )}
+                    </PopupState>
                   </li>
                 );
               })}
-              {showBTN && (
+              {showBTN && comments.length >= 3 && (
                 <button className="text-blue-600" onClick={handleUnslice}>
                   more →
                 </button>
