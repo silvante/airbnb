@@ -157,7 +157,7 @@ const CommentForm = ({ placeId, ownerId }) => {
                 required
                 value={comment}
                 onChange={(e) => setcomment(e.target.value)}
-                className="flex-1 placeholder:text-basedark border-2 border-basedark px-3 rounded-lg"
+                className="flex-1 outline-none bg-fun border-b-2 border-slate-300 px-3 rounded-lg"
                 placeholder="Your opinions"
               />
               <button className="bg-base text-white py-2 px-10 rounded-lg">
