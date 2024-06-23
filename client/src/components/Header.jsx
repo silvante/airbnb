@@ -11,14 +11,20 @@ import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
 import Fade from "@mui/material/Fade";
 import Paper from "@mui/material/Paper";
 import Logout from "./Logout";
+import SearchComponents from "./SearchComponents";
 
 const Header = () => {
   const { user } = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
   const [model, setModel] = useState(false);
+  const [searching, setsearching] = useState(false);
 
   if (redirect) {
     <Navigate to={"/"} />;
+  }
+
+  if (searching) {
+    return <SearchComponents model={setsearching} />;
   }
 
   return (
@@ -32,12 +38,15 @@ const Header = () => {
           <Link className="font-normal px-4 border-l border-gray-300">
             Experiences
           </Link>
-          <Link className="font-normal px-4 border-l border-gray-300">
+          <button
+            onClick={() => setsearching(true)}
+            className="font-normal px-4 border-l border-gray-300"
+          >
             Search envoirment{" "}
             <span className="bg-base text-white rounded-full mypadding">
               <i className="bx bx-search"></i>
             </span>
-          </Link>
+          </button>
         </div>
         <div className="flex space-x-2">
           <PopupState variant="popper" popupId="demo-popup-popper">
@@ -112,7 +121,8 @@ const Header = () => {
                                 {...bindToggle(popupState)}
                                 className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
                               >
-                                <i className="bx bx-list-ul text-xl mr-2"></i> My bookings
+                                <i className="bx bx-list-ul text-xl mr-2"></i>{" "}
+                                My bookings
                               </Link>
                             </div>
                           )}
