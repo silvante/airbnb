@@ -56,7 +56,12 @@ const BookingWidget = ({ place }) => {
         Request
       </button>
       {request && (
-        <BookingPopup popup={setRequest} tel={tel} num={numberOfGuests} />
+        <BookingPopup
+          popup={setRequest}
+          tel={tel}
+          num={numberOfGuests}
+          place={place}
+        />
       )}
     </div>
   );

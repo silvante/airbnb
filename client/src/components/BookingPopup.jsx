@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { differenceInCalendarDays } from "date-fns";
 
-const BookingPopup = ({ popup, tel, num }) => {
+const BookingPopup = ({ popup, tel, num, place }) => {
   const [number, setnumber] = useState(num);
   const [phone, setphone] = useState(tel);
   const [name, setname] = useState(null);
@@ -8,8 +9,19 @@ const BookingPopup = ({ popup, tel, num }) => {
   const [checkout, setcheckout] = useState(null);
   const [disabled, setdisabled] = useState(false);
 
+  let numberOfNights = 0;
+  if (checkin && checkout) {
+    let number = differenceInCalendarDays(
+      new Date(checkin),
+      new Date(checkout)
+    );
+    numberOfNights = Math.abs(number);
+  }
+
+  console.log(place);
+
   return (
-    <div className="fixed top-[-2%] left-0 bg-black/50 bg-blur z-50 w-full h-screen flex justify-center items-center">
+    <div className="fixed top-[-12px] left-0 bg-black/50 bg-blur z-50 w-full h-screen flex justify-center items-center">
       <div className="bg-white p-5 rounded-xl">
         <div>
           <h2 className="text-xl font-semibold">Booking form</h2>
@@ -59,7 +71,17 @@ const BookingPopup = ({ popup, tel, num }) => {
               className="bg-fun w-full outline-none py-2 px-4 border-b-2 border-slate-300 rounded-lg"
             />
           </div>
-          <p>if you are ready</p>
+          <p className="py-3">
+            if you are ready to pay{" "}
+            {checkin && checkout ? (
+              <span className="font-semibold">
+                {" "}
+                _${numberOfNights * place.price}_
+              </span>
+            ) : (
+              <span className="font-semibold">___</span>
+            )}
+          </p>
           <button
             disabled={!checkin || !checkout || !name}
             className={`bg-base w-full rounded-lg py-2 text-white ${
