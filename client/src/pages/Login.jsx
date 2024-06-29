@@ -44,7 +44,7 @@ const Register = () => {
             <input
               type="text"
               className="bg-gray-200 outline-none px-5 py-2 rounded-lg"
-              placeholder="email here"
+              placeholder="username here"
               value={username}
               onChange={(e) => setusername(e.target.value)}
               required
