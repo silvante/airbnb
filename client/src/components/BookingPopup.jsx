@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import axios from "axios";
+import { UserContext } from "../UserContext";
 
 const BookingPopup = ({ popup, tel, num, place }) => {
+  const { user, ready } = useContext(UserContext);
   const [number, setnumber] = useState(num);
   const [phone, setphone] = useState(tel);
   const [name, setname] = useState(null);
@@ -28,6 +30,7 @@ const BookingPopup = ({ popup, tel, num, place }) => {
       mobile: tel,
       name,
       price: numberOfNights * place.price,
+      user: user._id,
     });
   }
 

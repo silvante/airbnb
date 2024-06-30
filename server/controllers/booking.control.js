@@ -35,14 +35,15 @@ const getBooking = async (req, res) => {
 
 const addBooking = async (req, res) => {
   try {
-    const { price, name, modile, checkin, checkout, place } = req.body;
+    const { price, name, mobile, checkin, checkout, place, user } = req.body;
     const newBooking = await Booking.create({
       price,
       name,
-      modile,
+      mobile,
       checkin,
       checkout,
       place,
+      user,
     });
     res.status(201).send(newBooking);
   } catch (err) {
@@ -56,7 +57,7 @@ const addBooking = async (req, res) => {
 const editBooking = async (req, res) => {
   const id = req.params.id;
   try {
-    const { price, name, modile, checkin, checkout, place } = req.body;
+    const { price, name, modile, checkin, checkout, place, user } = req.body;
     const booking = await Booking.findByIdAndUpdate(id, {
       price,
       name,
@@ -64,6 +65,7 @@ const editBooking = async (req, res) => {
       checkin,
       checkout,
       place,
+      user,
     });
     if (!booking) {
       res.status(404).send("booking is not defined");
@@ -91,6 +93,7 @@ const deleteBooking = async (req, res) => {
     res.send(err);
   }
 };
+
 
 module.exports = {
   getBooking,

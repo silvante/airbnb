@@ -6,6 +6,7 @@ const fs = require("fs");
 const multer = require("multer");
 const Place = require("../models/places.model");
 const Comment = require("../models/comment.model");
+const Booking = require("../models/booking.model");
 
 const uploadDir = path.join("D:/airbnb/server", "/uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -79,4 +80,17 @@ router.get("/places-of/:id", async (req, res) => {
   }
 });
 
+router.get("/bookings-of/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const bookings = await Booking.find({ user: id });
+    if (!bookings) {
+      res.status(404).send("user haw no bookings");
+    }
+    res.status(200).send(bookings);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
 module.exports = router;
