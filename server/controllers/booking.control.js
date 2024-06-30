@@ -4,7 +4,7 @@ const Booking = require("../models/booking.model");
 
 const getBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find();
+    const bookings = await Booking.find().populate("place");
     if (!bookings) {
       res.status(404).send("bookings is not defined");
     }
@@ -20,7 +20,7 @@ const getBookings = async (req, res) => {
 const getBooking = async (req, res) => {
   const id = req.params.id;
   try {
-    const booking = await Booking.find({ _id: id });
+    const booking = await Booking.find({ _id: id }).populate("place");
     if (!booking) {
       res.status(404).send("booking is not defined");
     }
@@ -93,7 +93,6 @@ const deleteBooking = async (req, res) => {
     res.send(err);
   }
 };
-
 
 module.exports = {
   getBooking,

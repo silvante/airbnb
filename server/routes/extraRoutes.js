@@ -83,7 +83,7 @@ router.get("/places-of/:id", async (req, res) => {
 router.get("/bookings-of/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const bookings = await Booking.find({ user: id });
+    const bookings = await Booking.find({ user: id }).populate("place");
     if (!bookings) {
       res.status(404).send("user haw no bookings");
     }
