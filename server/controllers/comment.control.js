@@ -2,7 +2,7 @@ const Comment = require("../models/comment.model");
 
 const getComments = async (req, res) => {
   try {
-    const comments = await Comment.find();
+    const comments = await Comment.find().populate("commentor");
     if (!comments) {
       res.status(404).send("no comments here");
     }
@@ -16,7 +16,7 @@ const getComments = async (req, res) => {
 const getComment = async (req, res) => {
   const commentId = req.params.id;
   try {
-    const comment = await Comment.find({ _id: commentId });
+    const comment = await Comment.find({ _id: commentId }).populate("commentor");
     if (!comment) {
       res.status(404).send("user is not defined...");
     }

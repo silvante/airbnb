@@ -180,16 +180,7 @@ const Booking = () => {
           </div>
         </div>
         <div>
-          <CommentForm
-            placeId={place._id}
-            owner={
-              owner && {
-                _id: owner._id,
-                username: owner.username,
-                verificated: owner.verificated,
-              }
-            }
-          />
+          <CommentForm placeId={place._id} ownerId={owner && owner._id} />
         </div>
       </div>
     </div>

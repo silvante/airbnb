@@ -32,12 +32,7 @@ const CommentForm = ({ placeId, ownerId }) => {
   useEffect(() => {
     if (user) {
       setisWork(true);
-      setcommentor({
-        id: user._id,
-        username: user.username,
-        verificated: user.verificated,
-        avatar: user.avatar,
-      });
+      setcommentor(user._id);
     } else {
       setisWork(false);
     }
@@ -262,7 +257,7 @@ const CommentForm = ({ placeId, ownerId }) => {
                                   <Paper>
                                     <div className="mt-2">
                                       <div className="border-b">
-                                        {user._id == comment.commentor.id && (
+                                        {user._id == comment.commentor._id && (
                                           <Link
                                             className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center"
                                             onClick={() =>
@@ -283,7 +278,7 @@ const CommentForm = ({ placeId, ownerId }) => {
                                           Copy
                                         </Link>
                                       </div>
-                                      {user._id == comment.commentor.id && (
+                                      {user._id == comment.commentor._id && (
                                         <Link
                                           {...bindToggle(popupState)}
                                           onClick={() =>

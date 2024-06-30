@@ -55,7 +55,7 @@ router.post("/upload", photosMiddleware.array("photos", 20), (req, res) => {
 router.get("/comments-of/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const placeComments = await Comment.find({ to: id });
+    const placeComments = await Comment.find({ to: id }).populate("commentor");
     if (!placeComments) {
       res.status(404).send("this user has nopo places");
     }

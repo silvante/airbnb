@@ -7,7 +7,8 @@ const commentSchema = mongoose.Schema({
   },
   commentor: {
     required: true,
-    type: Object,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
   },
   rating: {
     type: Number,
