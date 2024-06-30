@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
+import axios from "axios";
 
 const BookingPopup = ({ popup, tel, num, place }) => {
   const [number, setnumber] = useState(num);
@@ -7,7 +8,7 @@ const BookingPopup = ({ popup, tel, num, place }) => {
   const [name, setname] = useState(null);
   const [checkin, setcheckin] = useState(null);
   const [checkout, setcheckout] = useState(null);
-  const [disabled, setdisabled] = useState(false);
+  const [loading, setloading] = useState(false);
 
   let numberOfNights = 0;
   if (checkin && checkout) {
@@ -18,7 +19,17 @@ const BookingPopup = ({ popup, tel, num, place }) => {
     numberOfNights = Math.abs(number);
   }
 
-  console.log(place);
+  async function bookThisPlace(ev) {
+    ev.preventDefault();
+    const { data } = await axios.post("/api/bookings", {
+      place: place._id,
+      checkin,
+      checkout,
+      mobile: tel,
+      name,
+      price: numberOfNights * place.price,
+    });
+  }
 
   return (
     <div className="fixed top-[-12px] left-0 bg-black/50 bg-blur z-50 w-full h-screen flex justify-center items-center">
@@ -84,11 +95,12 @@ const BookingPopup = ({ popup, tel, num, place }) => {
           </p>
           <button
             disabled={!checkin || !checkout || !name}
+            onClick={bookThisPlace}
             className={`bg-base w-full rounded-lg py-2 text-white ${
-              !checkin || !checkout || !name ? "opacity-80" : ""
+              !checkin || !checkout || !name || loading ? "opacity-80" : ""
             }`}
           >
-            Submit & send
+            {!loading ? "Submit & send" : "sending to owner..."}
           </button>
         </form>
       </div>
