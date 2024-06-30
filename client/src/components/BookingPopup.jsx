@@ -32,6 +32,8 @@ const BookingPopup = ({ popup, tel, num, place }) => {
       price: numberOfNights * place.price,
       user: user._id,
     });
+    popup(false);
+    alert("successfuly send!!");
   }
 
   return (

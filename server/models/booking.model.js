@@ -9,7 +9,7 @@ const bookingSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  checkin: {
+  checkout: {
     type: Date,
     required: true,
   },
