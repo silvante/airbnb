@@ -22,7 +22,6 @@ const Singup = () => {
         username: `@${username}`,
       });
       setcreating(false);
-      console.log(response);
       alert("sing up is done: just login now...");
       navigate("/login");
     } catch (err) {

@@ -17,7 +17,6 @@ const MyBookings = () => {
     getMyBookings();
   }, []);
 
-  console.log(bookings);
   return (
     <div>
       <header className="flex items-center justify-between w-full">

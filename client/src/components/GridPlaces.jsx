@@ -5,7 +5,6 @@ import { imageTotalLink } from "..";
 const GridPlaces = ({ places }) => {
   const location = useLocation();
   const path = location.pathname;
-  console.log(path);
   return (
     <section className="w-full grid grid-cols-4 gap-8 my-5">
       {places.map((place) => {

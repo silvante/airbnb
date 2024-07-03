@@ -39,7 +39,6 @@ const PlaceSettings = () => {
     navigator.clipboard
       .writeText(titleThis)
       .then(() => {
-        console.log("Text copied to clipboard");
         alert("Text copied to clipboard");
       })
       .catch((err) => {
