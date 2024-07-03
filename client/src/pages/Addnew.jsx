@@ -182,8 +182,6 @@ const Addnew = () => {
     return <Navigate to={redirect} />;
   }
 
-  console.log(placeDoc);
-
   if (ready && id && placeDoc.owner !== user._id) {
     return (
       <div className="w-full h-[60vh] px-basic flex flex-col items-center justify-center space-y-10">
