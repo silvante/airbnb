@@ -57,7 +57,8 @@ const addBooking = async (req, res) => {
 const editBooking = async (req, res) => {
   const id = req.params.id;
   try {
-    const { price, name, modile, checkin, checkout, place, user } = req.body;
+    const { price, name, modile, checkin, checkout, place, user, closed } =
+      req.body;
     const booking = await Booking.findByIdAndUpdate(id, {
       price,
       name,
@@ -66,6 +67,7 @@ const editBooking = async (req, res) => {
       checkout,
       place,
       user,
+      closed,
     });
     if (!booking) {
       res.status(404).send("booking is not defined");
