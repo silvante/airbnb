@@ -100,6 +100,12 @@ const UserProfile = () => {
             >
               <i className="bx bx-list-ul text-xl mr-1"></i> My bookings
             </NavLink>
+            <NavLink
+              className="px-5 py-2 transition-all flex items-center border-l border-gray-300"
+              to={"/profile/request"}
+            >
+              <i className="bx bx-message-dots text-xl mr-1"></i> My requests
+            </NavLink>
           </div>
         </div>
         <section>

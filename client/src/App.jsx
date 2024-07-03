@@ -19,6 +19,7 @@ import EditProfile from "./pages/EditProfile";
 import Booking from "./pages/Booking";
 import PlaceSettings from "./components/PlaceSettings";
 import Channel from "./pages/Channel";
+import MyRequests from "./pages/MyRequests";
 
 axios.defaults.baseURL = "http://localhost:7000";
 axios.defaults.withCredentials = true;
@@ -38,6 +39,7 @@ const App = () => {
             path="/profile/places/settings/:id"
             element={<PlaceSettings />}
           />
+          <Route index path="/profile/request" element={<MyRequests />} />
         </Route>
         <Route path="/add-new" element={<Addnew />} />
         <Route path="/place/:id" element={<Booking />} />

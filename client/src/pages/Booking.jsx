@@ -80,6 +80,7 @@ const Booking = () => {
 
   if (!place) return;
 
+
   // main booking returns
   return (
     <div className="w-full flex justify-center">
