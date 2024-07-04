@@ -257,17 +257,18 @@ const CommentForm = ({ placeId, ownerId }) => {
                                   <Paper>
                                     <div className="mt-2">
                                       <div className="border-b">
-                                        {user._id == comment.commentor._id && (
-                                          <Link
-                                            className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center"
-                                            onClick={() =>
-                                              handleEdit(comment._id)
-                                            }
-                                          >
-                                            <i className="bx bx-edit text-xl mr-2"></i>{" "}
-                                            Edit
-                                          </Link>
-                                        )}
+                                        {user &&
+                                          user._id == comment.commentor._id && (
+                                            <Link
+                                              className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center"
+                                              onClick={() =>
+                                                handleEdit(comment._id)
+                                              }
+                                            >
+                                              <i className="bx bx-edit text-xl mr-2"></i>{" "}
+                                              Edit
+                                            </Link>
+                                          )}
                                         <Link
                                           onClick={() =>
                                             handleCopy(comment.comment)
@@ -278,18 +279,19 @@ const CommentForm = ({ placeId, ownerId }) => {
                                           Copy
                                         </Link>
                                       </div>
-                                      {user._id == comment.commentor._id && (
-                                        <Link
-                                          {...bindToggle(popupState)}
-                                          onClick={() =>
-                                            hanldeDelete(comment._id)
-                                          }
-                                          className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center text-baseRed"
-                                        >
-                                          <i className="bx bx-trash text-xl mr-2"></i>
-                                          Delete
-                                        </Link>
-                                      )}
+                                      {user &&
+                                        user._id == comment.commentor._id && (
+                                          <Link
+                                            {...bindToggle(popupState)}
+                                            onClick={() =>
+                                              hanldeDelete(comment._id)
+                                            }
+                                            className="hover:bg-gray-100 transition-all py-2 px-2 w-40 flex items-center text-baseRed"
+                                          >
+                                            <i className="bx bx-trash text-xl mr-2"></i>
+                                            Delete
+                                          </Link>
+                                        )}
                                     </div>
                                   </Paper>
                                 </Fade>
