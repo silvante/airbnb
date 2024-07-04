@@ -1,11 +1,13 @@
 import { tabScrollButtonClasses } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { imageTotalLink } from "..";
+import { UserContext } from "../UserContext";
 
 const PlaceSettings = () => {
   const { id } = useParams();
+  const { user, ready } = useContext(UserContext);
   const [place, setplace] = useState(null);
   const [deleting, setdeleting] = useState(false);
   const [danger, setdanger] = useState(false);
@@ -60,6 +62,10 @@ const PlaceSettings = () => {
 
   if (redirect) {
     return <Navigate to={redirect} />;
+  }
+
+  if (user._id !== place.owner) {
+    return <Navigate to={"/profile/places"} />;
   }
 
   return (

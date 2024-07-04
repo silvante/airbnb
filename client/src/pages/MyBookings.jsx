@@ -30,7 +30,7 @@ const MyBookings = () => {
       {bookings.length <= 0 && (
         <PageIsEmpty text={"You have no bookings yet"} />
       )}
-      <section className="py-5 gap-5">
+      <section className="py-5 space-y-5">
         {bookings.map((booking) => {
           return (
             <div

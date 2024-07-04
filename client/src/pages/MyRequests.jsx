@@ -20,8 +20,6 @@ const MyRequests = () => {
     }
   };
 
-  console.log(alignment);
-
   async function getMyBookings() {
     const { data } = await axios.get("/api/bookings/");
     const filteredData = data.filter((e) => e.place.owner == user._id);
@@ -65,6 +63,7 @@ const MyRequests = () => {
             return (
               <Link
                 key={booking._id}
+                to={`/profile/request/${booking._id}`}
                 className="w-full p-5 bg-white rounded-xl shadow-lg flex items-center justify-between transition-all hover:scale-105"
               >
                 <div className="flex items-center  gap-5">
