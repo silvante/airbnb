@@ -124,6 +124,14 @@ const Header = () => {
                                 <i className="bx bx-list-ul text-xl mr-2"></i>{" "}
                                 My bookings
                               </Link>
+                              <Link
+                                to={`/profile/request`}
+                                {...bindToggle(popupState)}
+                                className="hover:bg-gray-100 transition-all py-2 px-2 w-64 flex items-center"
+                              >
+                                <i className="bx bx-message-dots text-xl mr-2"></i>{" "}
+                                My requests
+                              </Link>
                             </div>
                           )}
                           {!!user && (
