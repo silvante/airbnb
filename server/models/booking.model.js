@@ -25,7 +25,6 @@ const bookingSchema = mongoose.Schema({
   price: Number,
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
   },
   closed: {
     type: Boolean,

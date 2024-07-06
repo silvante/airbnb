@@ -7,7 +7,7 @@ const BookingPopup = ({ popup, tel, num, place }) => {
   const { user, ready } = useContext(UserContext);
   const [number, setnumber] = useState(num);
   const [phone, setphone] = useState(tel);
-  const [name, setname] = useState(user.name);
+  const [name, setname] = useState(user && user.name);
   const [checkin, setcheckin] = useState(null);
   const [checkout, setcheckout] = useState(null);
   const [loading, setloading] = useState(false);
@@ -30,7 +30,7 @@ const BookingPopup = ({ popup, tel, num, place }) => {
       mobile: tel,
       name,
       price: numberOfNights * place.price,
-      user: user._id,
+      user: user && user._id,
     });
     popup(false);
     alert("successfuly send!!");
