@@ -19,7 +19,11 @@ const SingleRequest = () => {
   if (booking && user._id !== booking.place.owner) {
     return <Navigate to={"/profile/request"} />;
   }
-  return <div>SingleRequest: {id}</div>;
+  return (
+    <div className="w-full flex justify-center px-basic">
+      <div className="w-base py-5">request {booking.place.title}</div>
+    </div>
+  );
 };
 
 export default SingleRequest;
