@@ -8,7 +8,7 @@ const Place = require("../models/places.model");
 const Comment = require("../models/comment.model");
 const Booking = require("../models/booking.model");
 
-const uploadDir = path.join("D:/airbnb/server", "/uploads");
+const uploadDir = path.join("/airbnb/server", "/uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
