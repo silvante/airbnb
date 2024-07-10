@@ -1,1 +1,1 @@
-export const imageTotalLink = "http://localhost:7000/uploads/";
+export const imageTotalLink = "https://heavenstore-demo.onrender.com/uploads/";
