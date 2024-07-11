@@ -22,7 +22,8 @@ import Channel from "./pages/Channel";
 import MyRequests from "./pages/MyRequests";
 import SingleRequest from "./pages/SingleRequest";
 
-axios.defaults.baseURL = "https://heavenstore-demo.onrender.com";
+axios.defaults.baseURL =
+  "https://heavenstore-service-unlocked-backend.onrender.com";
 axios.defaults.withCredentials = true;
 
 const App = () => {

@@ -1,1 +1,2 @@
-export const imageTotalLink = "https://heavenstore-demo.onrender.com/uploads/";
+export const imageTotalLink =
+  "https://heavenstore-service-unlocked-backend.onrender.com/uploads/";
