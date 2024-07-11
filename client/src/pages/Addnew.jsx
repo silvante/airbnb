@@ -10,6 +10,7 @@ import pets from "../assets/pets.svg";
 import cosino from "../assets/cosino.svg";
 import game from "../assets/game.svg";
 import parking from "../assets/parking.svg";
+import { imageTotalLink } from "..";
 
 const Addnew = () => {
   const { user, ready } = useContext(UserContext);
@@ -286,7 +287,7 @@ const Addnew = () => {
                           <i className="bx bx-trash"></i>
                         </button>
                         <img
-                          src={"http://localhost:7000/uploads/" + link}
+                          src={imageTotalLink + link}
                           alt={link}
                           className="w-full object-cover"
                         />
