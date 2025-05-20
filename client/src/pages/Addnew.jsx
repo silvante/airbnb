@@ -271,7 +271,7 @@ const Addnew = () => {
               </div>
             </div>
             <div className="flex flex-col space-y-1">
-              <label>more photos is better*</label>
+              <label>more photos are better*</label>
               <div className="bg-tra w-normal h-96 p-2 grid grid-cols-5 grid-rows-3 bg-fun rounded-xl gap-2">
                 {addedPhotos.length > 0 &&
                   addedPhotos.map((link) => {

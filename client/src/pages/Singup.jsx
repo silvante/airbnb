@@ -21,12 +21,13 @@ const Singup = () => {
         password,
         username: `@${username}`,
       });
-      setcreating(false);
       alert("sing up is done: just login now...");
       navigate("/login");
     } catch (err) {
       console.log(err);
       alert("sing up faild: try again...");
+    } finally {
+      setcreating(false);
     }
   };
   return (

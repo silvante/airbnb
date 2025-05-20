@@ -20,7 +20,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
     credentials: true,
-    origin: "https://airwayuz.netlify.app",
+    origin: "http://localhost:5173",
   })
 );
 app.use(express.json());
